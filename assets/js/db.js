@@ -111,20 +111,110 @@ const db = {
                  dbName = null,
                  id = null
              }) {
+            if (!dbName) {
+                return Promise.reject(new Error('dbName is required'));
+            }
+            if (id === null || id === undefined) {
+                return Promise.reject(new Error('id is required'));
+            }
 
+            return this.init().then((database) => {
+                return new Promise((resolve, reject) => {
+                    if (!database.objectStoreNames.contains(dbName)) {
+                        reject(new Error(`ObjectStore '${dbName}' does not exist`));
+                        return;
+                    }
+
+                    const tx = database.transaction(dbName, 'readonly');
+                    const store = tx.objectStore(dbName);
+
+                    const request = store.get(id);
+
+                    request.onsuccess = (event) => {
+                        resolve(event.target.result || null);
+                    };
+                    request.onerror = (event) => {
+                        reject(event.target.error || new Error('Failed to load data'));
+                    };
+                });
+            }).then(record => record);
     },
     deleteData({
                    dbName = null,
                    id = null
                }) {
+        if (!dbName) {
+            return Promise.reject(new Error('dbName is required'));
+        }
+        if (id === null || id === undefined) {
+            return Promise.reject(new Error('id is required'));
+        }
 
+        return this.init().then((database) => {
+            return new Promise((resolve, reject) => {
+                if (!database.objectStoreNames.contains(dbName)) {
+                    reject(new Error(`ObjectStore '${dbName}' does not exist`));
+                    return;
+                }
+
+                const tx = database.transaction(dbName, 'readwrite');
+                const store = tx.objectStore(dbName);
+
+                const request = store.delete(id);
+
+                request.onsuccess = () => {
+                    resolve(true);
+                };
+                request.onerror = (event) => {
+                    reject(event.target.error || new Error('Failed to delete data'));
+                };
+            });
+        }).then(result => result);
     },
     listAllData({
                     dbName = null,
                     fields = null,  // fields kann ein Array sein, das angibt, dass aus den Datensätzen nur die Felder zurückgegeben werden sollen 
                 }) {
+                if (!dbName) {
+                    return Promise.reject(new Error('dbName is required'));
+                }
+                const project = (record) => {
+                    if (!Array.isArray(fields) || fields.length === 0) {
+                        return record;
+                    }
+                    const out = {
+                        id: record.id
+                    };
+                    fields.forEach((key) => {
+                        if (Object.prototype.hasOwnProperty.call(record, key)) {
+                            out[key] = record[key];
+                        }
+                    });
+                    return out;
+                };
 
-    }
+                return this.init().then((database) => {
+                    return new Promise((resolve, reject) => {
+                        if (!database.objectStoreNames.contains(dbName)) {
+                            reject(new Error(`ObjectStore '${dbName}' does not exist`));
+                            return;
+                        }
+                        const tx = database.transaction(dbName, 'readonly');
+                        const store = tx.objectStore(dbName);
+
+                        const request = store.getAll();
+
+                        request.onsuccess = (event) => {
+                            const all = event.target.result || [];
+                            const projected = all.map(project);
+                            resolve(projected);
+                        };
+                        request.onerror = (event) => {
+                            reject(event.target.error || new Error('Failed to list data'));
+                        };
+                    });
+                }).then((list) => list);
+            }
 
 
 }
