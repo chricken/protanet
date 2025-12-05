@@ -1,16 +1,29 @@
 "use strict"
 
+import helpers from "../helpers";
+
 class Place {
-    constructor() {
+    constructor({
+                    id = null,
+                    name = null,
+                    description = null,
+                    partOf = [],    // Eine Kneipe kann Teil einer Stadt sein, eine Stadt kann Teil eines Landes sein
+                }) {
+
+        Object.assign(this, {id, name, description, partOf});
+        if (!id) this.id = helpers.createID();
 
     }
-    update(){
+
+    update() {
 
     }
-    render(){
+
+    render() {
 
     }
-    connect(){
+
+    connect() {
 
     }
 }

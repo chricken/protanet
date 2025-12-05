@@ -2,18 +2,15 @@
 
 import helpers from "../helpers.js";
 
-class Event {
+class Thing {
     constructor({
                     id = null,
                     name = null,
                     description = null,
-                    data = null,
-                    place = null,
-                    participants = [],
+                    roles = []
                 }) {
-        Object.assign(this, {id, name, description, data, place, participants});
+        Object.assign(this, {id, name, description, roles});
         if (!id) this.id = helpers.createID();
-
     }
 
     update() {
@@ -27,6 +24,8 @@ class Event {
     connect() {
 
     }
+
+
 }
 
-export default Event;
+export default Thing;

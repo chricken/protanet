@@ -1,13 +1,14 @@
 "use strict";
 
 const data = {
-    persons: [],
+    persons: [
+
+    ],
     groups: [],
     places: [],
     events: [],
     objects: [],
     images: [],
-    roles: [],
-
+    roles: []
 }
 export default data;

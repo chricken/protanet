@@ -1,16 +1,13 @@
 "use strict";
 
 import db from "./db.js";
+import data from "./data.js";
+import Person from "./classes/Person.js";
 
-const person = {
-    id:2,
-    prename: 'Mark',
-    surname: 'smith',
-};
 
 const init = () => {
     db.init().then(
-        ()=>{
+        () => {
 
 
         }

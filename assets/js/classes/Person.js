@@ -2,7 +2,8 @@
 
 import data from "../data.js";
 import Role from "./Role.js";
-import db from "../db";
+import db from "../db.js";
+import helpers from "../helpers.js";
 
 class Person {
     constructor({
@@ -25,9 +26,12 @@ class Person {
         // - dann die ID übertragen wird
         Object.assign(
             this,
-            { prename, surname, altNames, image, placeBirth, dateBirth, roles, placeDeath, dateDeath});
+            {id, prename, surname, altNames, image, placeBirth, dateBirth, roles, placeDeath, dateDeath});
 
-        if(id) this.id = id;
+        if (!id) {
+            this.id = helpers.createID();
+            this.save();
+        }
     }
 
     update() {
@@ -44,10 +48,17 @@ class Person {
 
     }
 
-    save(){
-        db.storeData({
-            dbName:'protanet_persons',
-            payload:this
+    save() {
+        return db.storeData({
+            dbName: 'protanet_persons',
+            payload: this
+        })
+    }
+
+    delete() {
+        return db.deleteData({
+            dbName: 'protanet_persons',
+            id: this.id
         })
     }
 }
