@@ -4,24 +4,43 @@
 Modul für das Management der indexedDB
 */
 
-let dbVersion = 1;
+let dbVersion = 2;
 
-const dbNames = [
-    {
+const dbNames = {
+    persons: {
         name: 'protanet_persons',
-
-    }, {
+    },
+    groups: {
         name: 'protanet_groups',
-    }, {
+    },
+    places: {
         name: 'protanet_places',
-    }, {
+    },
+    events: {
         name: 'protanet_events',
-    }, {
+    },
+    objects: {
         name: 'protanet_objects',
-    }, {
+    },
+    images: {
         name: 'protanet_images',
-    }
-]
+    },
+    werke: {
+        name: 'protanet_werke',
+    },
+    baende: {
+        name: 'protanet_baende',
+    },
+    kapitel: {
+        name: 'protanet_kapitel',
+    },
+    segments: {
+        name: 'protanet_segments',
+    },
+    notes: {
+        name: 'protanet_notes',
+    },
+}
 
 const db = {
     init() {
@@ -34,11 +53,13 @@ const db = {
             request.onupgradeneeded = (event) => {
                 const database = event.target.result;
                 // Fehlende Stores anlegen. keyPath 'id' mit autoIncrement
-                dbNames.forEach(({name}) => {
-                    if (!database.objectStoreNames.contains(name)) {
-                        database.createObjectStore(name, {keyPath: 'id', autoIncrement: true});
-                    }
-                });
+                Object.values(dbNames)
+                    .map(dbName => dbName.name)
+                    .forEach(name => {
+                        if (!database.objectStoreNames.contains(name)) {
+                            database.createObjectStore(name, {keyPath: 'id', autoIncrement: true});
+                        }
+                    });
             };
 
             request.onsuccess = (event) => {
@@ -76,6 +97,8 @@ const db = {
             return Promise.reject(new Error('payload must be an object'));
         }
 
+        dbName = dbNames[dbName].name;
+
         return this.init().then((database) => {
             return new Promise((resolve, reject) => {
                 if (!database.objectStoreNames.contains(dbName)) {
@@ -111,33 +134,35 @@ const db = {
                  dbName = null,
                  id = null
              }) {
-            if (!dbName) {
-                return Promise.reject(new Error('dbName is required'));
-            }
-            if (id === null || id === undefined) {
-                return Promise.reject(new Error('id is required'));
-            }
+        if (!dbName) {
+            return Promise.reject(new Error('dbName is required'));
+        }
+        if (id === null || id === undefined) {
+            return Promise.reject(new Error('id is required'));
+        }
 
-            return this.init().then((database) => {
-                return new Promise((resolve, reject) => {
-                    if (!database.objectStoreNames.contains(dbName)) {
-                        reject(new Error(`ObjectStore '${dbName}' does not exist`));
-                        return;
-                    }
+        dbName = dbNames[dbName].name;
 
-                    const tx = database.transaction(dbName, 'readonly');
-                    const store = tx.objectStore(dbName);
+        return this.init().then((database) => {
+            return new Promise((resolve, reject) => {
+                if (!database.objectStoreNames.contains(dbName)) {
+                    reject(new Error(`ObjectStore '${dbName}' does not exist`));
+                    return;
+                }
 
-                    const request = store.get(id);
+                const tx = database.transaction(dbName, 'readonly');
+                const store = tx.objectStore(dbName);
 
-                    request.onsuccess = (event) => {
-                        resolve(event.target.result || null);
-                    };
-                    request.onerror = (event) => {
-                        reject(event.target.error || new Error('Failed to load data'));
-                    };
-                });
-            }).then(record => record);
+                const request = store.get(id);
+
+                request.onsuccess = (event) => {
+                    resolve(event.target.result || null);
+                };
+                request.onerror = (event) => {
+                    reject(event.target.error || new Error('Failed to load data'));
+                };
+            });
+        }).then(record => record);
     },
     deleteData({
                    dbName = null,
@@ -149,6 +174,8 @@ const db = {
         if (id === null || id === undefined) {
             return Promise.reject(new Error('id is required'));
         }
+
+        dbName = dbNames[dbName].name;
 
         return this.init().then((database) => {
             return new Promise((resolve, reject) => {
@@ -175,46 +202,46 @@ const db = {
                     dbName = null,
                     fields = null,  // fields kann ein Array sein, das angibt, dass aus den Datensätzen nur die Felder zurückgegeben werden sollen 
                 }) {
-                if (!dbName) {
-                    return Promise.reject(new Error('dbName is required'));
-                }
-                const project = (record) => {
-                    if (!Array.isArray(fields) || fields.length === 0) {
-                        return record;
-                    }
-                    const out = {
-                        id: record.id
-                    };
-                    fields.forEach((key) => {
-                        if (Object.prototype.hasOwnProperty.call(record, key)) {
-                            out[key] = record[key];
-                        }
-                    });
-                    return out;
-                };
-
-                return this.init().then((database) => {
-                    return new Promise((resolve, reject) => {
-                        if (!database.objectStoreNames.contains(dbName)) {
-                            reject(new Error(`ObjectStore '${dbName}' does not exist`));
-                            return;
-                        }
-                        const tx = database.transaction(dbName, 'readonly');
-                        const store = tx.objectStore(dbName);
-
-                        const request = store.getAll();
-
-                        request.onsuccess = (event) => {
-                            const all = event.target.result || [];
-                            const projected = all.map(project);
-                            resolve(projected);
-                        };
-                        request.onerror = (event) => {
-                            reject(event.target.error || new Error('Failed to list data'));
-                        };
-                    });
-                }).then((list) => list);
+        if (!dbName) {
+            return Promise.reject(new Error('dbName is required'));
+        }
+        const project = (record) => {
+            if (!Array.isArray(fields) || fields.length === 0) {
+                return record;
             }
+            const out = {
+                id: record.id
+            };
+            fields.forEach((key) => {
+                if (Object.prototype.hasOwnProperty.call(record, key)) {
+                    out[key] = record[key];
+                }
+            });
+            return out;
+        };
+
+        return this.init().then((database) => {
+            return new Promise((resolve, reject) => {
+                if (!database.objectStoreNames.contains(dbName)) {
+                    reject(new Error(`ObjectStore '${dbName}' does not exist`));
+                    return;
+                }
+                const tx = database.transaction(dbName, 'readonly');
+                const store = tx.objectStore(dbName);
+
+                const request = store.getAll();
+
+                request.onsuccess = (event) => {
+                    const all = event.target.result || [];
+                    const projected = all.map(project);
+                    resolve(projected);
+                };
+                request.onerror = (event) => {
+                    reject(event.target.error || new Error('Failed to list data'));
+                };
+            });
+        }).then((list) => list);
+    }
 
 
 }

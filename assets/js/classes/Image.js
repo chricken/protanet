@@ -1,6 +1,7 @@
 "use strict"
 
 import helpers from "../helpers.js";
+import db from "../db";
 
 class Image {
     constructor({
@@ -8,8 +9,14 @@ class Image {
                     name = null,
                     url = null,
                     description = null,
+                    crDate = null,
+                    chDate = null,
                 }) {
-        Object.assign(this, {id, name, url, description});
+        Object.assign(this, {id, name, url, description, chDate, crDate});
+
+        if (!crDate) this.crDate = Date.now();
+        if (!chDate) this.chDate = Date.now();
+
         if(!id) this.id = helpers.createID()
     }
 
@@ -23,6 +30,20 @@ class Image {
 
     connect() {
 
+    }
+    save() {
+        this.chDate = Date.now();
+        return db.storeData({
+            dbName: 'images',
+            payload: this
+        })
+    }
+
+    delete() {
+        return db.deleteData({
+            dbName: 'images',
+            id: this.id
+        })
     }
 }
 

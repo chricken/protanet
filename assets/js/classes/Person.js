@@ -17,8 +17,8 @@ class Person {
                     roles = [],   // Die Rolle kann sich ändern
                     placeDeath = null,
                     dateDeath = null,
-
-
+                    crDate = null,
+                    chDate = null,
                 }) {
         // Objekte werden erzeugt, indem sie
         // - zunächst angelegt,
@@ -26,7 +26,23 @@ class Person {
         // - dann die ID übertragen wird
         Object.assign(
             this,
-            {id, prename, surname, altNames, image, placeBirth, dateBirth, roles, placeDeath, dateDeath});
+            {
+                id,
+                prename,
+                surname,
+                altNames,
+                image,
+                placeBirth,
+                dateBirth,
+                roles,
+                placeDeath,
+                dateDeath,
+                chDate,
+                crDate
+            });
+
+        if (!crDate) this.crDate = Date.now();
+        if (!chDate) this.chDate = Date.now();
 
         if (!id) {
             this.id = helpers.createID();
@@ -49,15 +65,16 @@ class Person {
     }
 
     save() {
+        this.chDate = Date.now();
         return db.storeData({
-            dbName: 'protanet_persons',
+            dbName: 'persons',
             payload: this
         })
     }
 
     delete() {
         return db.deleteData({
-            dbName: 'protanet_persons',
+            dbName: 'persons',
             id: this.id
         })
     }

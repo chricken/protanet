@@ -1,6 +1,7 @@
 "use strict"
 
 import helpers from "../helpers";
+import db from "../db";
 
 class Place {
     constructor({
@@ -8,9 +9,15 @@ class Place {
                     name = null,
                     description = null,
                     partOf = [],    // Eine Kneipe kann Teil einer Stadt sein, eine Stadt kann Teil eines Landes sein
+                    crDate = null,
+                    chDate = null,
                 }) {
 
-        Object.assign(this, {id, name, description, partOf});
+        Object.assign(this, {id, name, description, partOf, chDate, crDate});
+
+        if (!crDate) this.crDate = Date.now();
+        if (!chDate) this.chDate = Date.now();
+
         if (!id) this.id = helpers.createID();
 
     }
@@ -25,6 +32,21 @@ class Place {
 
     connect() {
 
+    }
+
+    save() {
+        this.chDate = Date.now();
+        return db.storeData({
+            dbName: 'places',
+            payload: this
+        })
+    }
+
+    delete() {
+        return db.deleteData({
+            dbName: 'places',
+            id: this.id
+        })
     }
 }
 

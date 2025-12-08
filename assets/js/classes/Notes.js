@@ -1,26 +1,23 @@
 "use strict"
 
-import helpers from "../helpers";
+import helpers from "../helpers.js";
 import db from "../db";
 
-class Group {
+class Note {
     constructor({
                     id = null,
-                    name = null,
-                    description = null,
-                    members = [],
-                    founded = null,
-                    destroyed = null,
+                    title = null,
+                    image = null,
+                    roles = [],
                     crDate = null,
                     chDate = null,
                 }) {
-        Object.assign(this, {id, name, description, members, founded, destroyed, chDate, crDate});
+        Object.assign(this, {id,title,  image,  roles, chDate, crDate});
 
         if (!crDate) this.crDate = Date.now();
         if (!chDate) this.chDate = Date.now();
 
         if (!id) this.id = helpers.createID();
-
     }
 
     update() {
@@ -34,20 +31,22 @@ class Group {
     connect() {
 
     }
+
     save() {
         this.chDate = Date.now();
         return db.storeData({
-            dbName: 'groups',
+            dbName: 'notes',
             payload: this
         })
     }
 
     delete() {
         return db.deleteData({
-            dbName: 'groups',
+            dbName: 'notes',
             id: this.id
         })
     }
+
 }
 
-export default Group;
+export default Note;
