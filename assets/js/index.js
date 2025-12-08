@@ -17,7 +17,7 @@ const init = () => {
             */
 
             db.loadData({
-                dbName: 'protanet_persons',
+                dbName: 'persons',
                 id: "4zpt_miwrkk5u_1"
             }).then(
                 payload => new Person(payload)

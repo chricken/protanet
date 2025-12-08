@@ -1,6 +1,6 @@
 "use strict"
 
-import db from "../db";
+import db from "../db.js";
 
 class TypeRole {
     constructor(id, title, description) {

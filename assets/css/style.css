@@ -1,0 +1,12 @@
+@import './themeBasic.css';
+@import './header.css';
+@import './footer.css';
+@import './content.css';
+@import './tabs.css';
+@import './main.css';
+
+:root {
+    --distanceBasic: 10px;
+    --distanceNear: 5px;
+    --distanceFar: 20px;
+}

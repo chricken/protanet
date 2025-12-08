@@ -1,0 +1,12 @@
+tabs {
+    position: relative;
+    display: block;
+
+    tab {
+        position: relative;
+        display: inline-block;
+        padding: var(--distanceNear);
+        margin-right: var(--distanceNear);
+        background-color: var(--backgroundColor);
+    }
+}
