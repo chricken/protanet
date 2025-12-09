@@ -6,7 +6,5 @@
 @import './main.css';
 
 :root {
-    --distanceBasic: 10px;
-    --distanceNear: 5px;
-    --distanceFar: 20px;
+
 }

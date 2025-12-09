@@ -4,7 +4,6 @@ footer {
     bottom:0;
     left:0;
     right:0;
-    min-height:50px;
-    outline: 1px solid #aaa;
-
+    min-height:var(--footerHeight);
+    outline: var(--borderWidth) solid var(--drawColor);
 }

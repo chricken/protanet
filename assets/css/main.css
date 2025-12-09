@@ -1,6 +1,13 @@
 main {
-    position: relative;
-    margin-top: calc(var(--distanceBasic) + 50px);
+    position: fixed; /* occupy the area between fixed header and footer */
+    top: calc(var(--headerHeight) + var(--distanceBasic));
+    left: 0;
+    right: 0;
+    bottom: var(--footerHeight); /* footer height */
 
-    outline: 1px solid #aaa;
+    display: flex;
+    flex-direction: column;
+
+    /*outline: var(--borderWidth) solid #aaa;*/
+    overflow: hidden; /* delegate scrolling to inner panes */
 }

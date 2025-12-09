@@ -1,6 +1,7 @@
 tabs {
     position: relative;
     display: block;
+    border-bottom: var(--borderWidth) solid var(--drawColor);
 
     tab {
         position: relative;

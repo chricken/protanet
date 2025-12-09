@@ -1,4 +1,55 @@
+/* Layout for the main content area */
 content {
     position: relative;
-    display: block;
+    display: flex; /* workspace and ui side-by-side */
+    align-items: stretch;
+    flex: 1 1 auto; /* fill remaining height within main */
+    min-height: 0; /* allow inner panes to stretch without forcing overflow */
+    /* Workspace takes remaining width */
+
+    workspace {
+        position: relative;
+        flex: 1 1 auto; /* take the rest of the width */
+        min-width: 0; /* allow proper flex shrinking of content */
+        display: flex; /* so the top area sits at the top */
+        flex-direction: column;
+
+        topui {
+            align-self: stretch; /* full width within workspace */
+            border-bottom: var(--borderWidth) solid var(--drawColor);
+        }
+    }
+
+    /* Sidebar UI fixed width of 300px */
+
+    ui {
+        flex: 0 0 var(--widthUI); /* fixed width */
+        width: var(--widthUI);
+        border-left: var(--borderWidth) solid var(--drawColor);
+        padding-left: var(--paddingBasic);
+    }
+}
+
+/* Shared narrow scrollbar style for scrollable panes */
+workspace, ui {
+    scrollbar-width: thin; /* Firefox */
+    scrollbar-color: var(--scrollbarThumbColor) transparent;
+}
+
+/* WebKit-based browsers */
+workspace::-webkit-scrollbar,
+ui::-webkit-scrollbar {
+    width: var(--widthScrollbar);
+    height: var(--widthScrollbar);
+}
+
+workspace::-webkit-scrollbar-thumb,
+ui::-webkit-scrollbar-thumb {
+    background-color: var(--scrollbarThumbColor);
+    border-radius: var(--widthScrollbar);
+}
+
+workspace::-webkit-scrollbar-track,
+ui::-webkit-scrollbar-track {
+    background: transparent;
 }
