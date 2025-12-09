@@ -3,19 +3,14 @@
 import db from "./db.js";
 import data from "./data.js";
 import Person from "./classes/Person.js";
-
+import dom from "./dom.js";
 
 const init = () => {
+    dom.mapping();
     db.init().then(
         () => {
+            // Datenbank ausprobieren
             /*
-            let person = new Person({
-                prename: 'Max',
-                surname: 'Mustermann',
-                altNames: ['Maximilian']
-            })
-            */
-
             db.loadData({
                 dbName: 'persons',
                 id: "4zpt_miwrkk5u_1"
@@ -31,7 +26,7 @@ const init = () => {
             ).then(
                 console.log
             )
-
+            */
         }
     ).then(
         console.log

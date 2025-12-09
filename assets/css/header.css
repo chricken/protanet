@@ -1,9 +1,10 @@
 header {
     position: fixed;
-    top:0;
-    left:0;
-    right:0;
-    min-height:var(--headerHeight);
+    top: 0;
+    left: 0;
+    right: 0;
+    padding:var(--paddingBasic);
+    min-height: calc(var(--headerHeight) - var(--paddingBasic) * 2);
     outline: var(--borderWidth) solid var(--drawColor);
-
+    background-color: var(--backgroundColorShaded);
 }

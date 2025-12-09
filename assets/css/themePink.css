@@ -1,0 +1,31 @@
+:root {
+
+    /* Abstände */
+    --distanceBasic: 10px;
+    --distanceNear: 5px;
+    --distanceFar: 20px;
+
+    /* Radii */
+    --radiusBasic: 12px;
+
+    /* Größen */
+    --widthUI: 300px;
+    --widthScrollbar: 8px;
+    --headerHeight: 30px;
+    --footerHeight: 50px;
+    --borderWidth: 1px;
+    --paddingBasic: 5px;
+
+    /* Grundfarben */
+    --backgroundColor: #FFF5FA; /* zartes Rosa (Bubblegum-Basis) */
+    --backgroundColorShaded: #FFE3EE; /* schattiertes Rosa (Header/Tabs) */
+    --backgroundColorBG: #FFD6E7; /* Seitenhintergrund (Pastell-Pink) */
+    --textColor: #631849; /* Primäre Textfarbe (dunkles Himbeer-Pflaume) */
+    --shadedTextColor: #7A3B5B; /* Abgeschwächte/sekundäre Textfarbe (gedämpftes Pflaume) */
+    --drawColor: #F4A3C0; /* Akzentfarbe für Linien/Highlights (zartes Kaugummi-Rosa) */
+
+    /* Akzent- und Kontrastfarben */
+    --contrastColor1: #FF4D8D; /* Kontrast 1 (Raspberry-Pink für Warnung/Betonung) */
+    --contrastColor2: #2DD4BF; /* Kontrast 2 (Mintgrün/Positiv) */
+    --scrollbarThumbColor: #F08BB0; /* Scrollbar-Daumen in angenehmem Kaugummi-Pink */
+}

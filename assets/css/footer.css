@@ -6,4 +6,5 @@ footer {
     right:0;
     min-height:var(--footerHeight);
     outline: var(--borderWidth) solid var(--drawColor);
+    background-color: var(--backgroundColorShaded);
 }

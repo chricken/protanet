@@ -10,4 +10,5 @@ main {
 
     /*outline: var(--borderWidth) solid #aaa;*/
     overflow: hidden; /* delegate scrolling to inner panes */
+    background-color: var(--backgroundColorBG);
 }

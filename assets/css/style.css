@@ -1,4 +1,4 @@
-@import './themeBasic.css';
+/*@import './themeBasic.css';*/
 @import './header.css';
 @import './footer.css';
 @import './content.css';
@@ -7,4 +7,11 @@
 
 :root {
 
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+    color: var(--textColor);
+    background-color: var(--backgroundColorBG);
 }

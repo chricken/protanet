@@ -13,10 +13,18 @@ content {
         min-width: 0; /* allow proper flex shrinking of content */
         display: flex; /* so the top area sits at the top */
         flex-direction: column;
+        padding: var(--paddingBasic);
+
+        border: var(--borderWidth) solid var(--drawColor);
+        background-color: var(--backgroundColor);
+
+        border-radius: var(--radiusBasic);
 
         topui {
             align-self: stretch; /* full width within workspace */
             border-bottom: var(--borderWidth) solid var(--drawColor);
+            border-radius: var(--radiusBasic) var(--radiusBasic) 0 0;
+            padding: var(--paddingBasic);
         }
     }
 
@@ -26,7 +34,9 @@ content {
         flex: 0 0 var(--widthUI); /* fixed width */
         width: var(--widthUI);
         border-left: var(--borderWidth) solid var(--drawColor);
-        padding-left: var(--paddingBasic);
+        padding: var(--paddingBasic);
+        border-radius: var(--radiusBasic);
+        background-color: var(--backgroundColor);
     }
 }
 

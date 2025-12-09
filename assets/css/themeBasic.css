@@ -5,19 +5,24 @@
     --distanceNear: 5px;
     --distanceFar: 20px;
 
+    /* Radii */
+    --radiusBasic: 10px;
+
     /* Größen */
     --widthUI: 300px;
     --widthScrollbar: 8px;
     --headerHeight: 30px;
     --footerHeight: 50px;
-    --borderWidth: 2px;
+    --borderWidth: 1px;
     --paddingBasic: 5px;
 
     /* Grundfarben */
     --backgroundColor: #f5f3f3; /* Haupt-Hintergrund (hell) */
+    --backgroundColorShaded: #a6a2a2; /* Haupt-Hintergrund (hell) */
+    --backgroundColorBG: #716a6a; /* Haupt-Hintergrund (hell) */
     --textColor: #1f2937; /* Primäre Textfarbe (dunkel) */
     --shadedTextColor: #6b7280; /* Abgeschwächte/sekundäre Textfarbe */
-    --drawColor: #2563eb; /* Akzentfarbe für Linien/Highlights */
+    --drawColor: #abb9bc; /* Akzentfarbe für Linien/Highlights */
 
     /* Akzent- und Kontrastfarben */
     --contrastColor1: #ef4444; /* Kontrast 1 (Warnung/Betonung) */
