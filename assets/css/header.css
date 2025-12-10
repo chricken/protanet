@@ -7,4 +7,6 @@ header {
     min-height: calc(var(--headerHeight) - var(--paddingBasic) * 2);
     outline: var(--borderWidth) solid var(--drawColor);
     background-color: var(--backgroundColorShaded);
+
+    z-index: 100;
 }

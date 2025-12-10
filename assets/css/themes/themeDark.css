@@ -1,0 +1,32 @@
+:root {
+
+    /* Abstände */
+    --distanceBasic: 10px;
+    --distanceNear: 5px;
+    --distanceFar: 20px;
+
+    /* Radii */
+    --radiusBasic: 10px;
+
+    /* Größen */
+    --widthUI: 300px;
+    --widthScrollbar: 8px;
+    --headerHeight: 30px;
+    --footerHeight: 50px;
+    --borderWidth: 1px;
+    --paddingBasic: 5px;
+
+    /* Grundfarben */
+    --backgroundColor: #1e1e1e; /* Haupt-Hintergrund (dunkel) */
+    --backgroundColorShaded: #2d2d2d; /* Abgedunkelter-Hintergrund  */
+    --backgroundColorBG: #121212; /* Hintergrund ganz hinten */
+    --backgroundColorInputs: #2a2a2a;   /* Hintergrund für Inputfelder */
+    --textColor: #ffffff; /* Primäre Textfarbe (hell) */
+    --shadedTextColor: #b3b3b3; /* Abgeschwächte/sekundäre Textfarbe */
+    --drawColor: #555555; /* Akzentfarbe für Linien/Highlights */
+
+    /* Akzent- und Kontrastfarben */
+    --contrastColor1: #ff6b6b; /* Kontrast 1 (Warnung/Betonung) */
+    --contrastColor2: #51cf66; /* Kontrast 2 (Positiv/Bestätigung) */
+    --scrollbarThumbColor: #666;
+}

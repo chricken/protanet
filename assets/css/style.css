@@ -15,3 +15,7 @@ html {
     color: var(--textColor);
     background-color: var(--backgroundColorBG);
 }
+
+.transit {
+    transition: all 0.3s ease-in-out;
+}

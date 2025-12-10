@@ -1,0 +1,32 @@
+:root {
+
+    /* Abstände */
+    --distanceBasic: 10px;
+    --distanceNear: 5px;
+    --distanceFar: 20px;
+
+    /* Radii */
+    --radiusBasic: 10px;
+
+    /* Größen */
+    --widthUI: 300px;
+    --widthScrollbar: 8px;
+    --headerHeight: 30px;
+    --footerHeight: 50px;
+    --borderWidth: 1px;
+    --paddingBasic: 5px;
+
+    /* Grundfarben */
+    --backgroundColor: #fdf2f8; /* Haupt-Hintergrund (sehr helles Rosa) */
+    --backgroundColorShaded: #f3e8ff; /* Abgedunkelter-Hintergrund (hellviolett) */
+    --backgroundColorBG: #e879f9; /* Hintergrund ganz hinten (pink) */
+    --backgroundColorInputs: #ffffff;   /* Hintergrund für Inputfelder (weiß bleibt) */
+    --textColor: #831843; /* Primäre Textfarbe (dunkles Pink) */
+    --shadedTextColor: #a21caf; /* Abgeschwächte/sekundäre Textfarbe (mittleres Pink) */
+    --drawColor: #d946ef; /* Akzentfarbe für Linien/Highlights (helles Pink) */
+
+    /* Akzent- und Kontrastfarben */
+    --contrastColor1: #ec4899; /* Kontrast 1 (Pink für Betonung) */
+    --contrastColor2: #22c55e; /* Kontrast 2 (Grün als Komplementärfarbe) */
+    --scrollbarThumbColor: #c084fc;
+}
