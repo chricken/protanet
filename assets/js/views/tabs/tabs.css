@@ -1,0 +1,9 @@
+tabs {
+    position: relative;
+    display: block;
+    border-bottom: var(--borderWidth) solid var(--drawColor);
+    background-color: var(--backgroundColorShaded);
+    padding-top: var(--paddingBasic);
+    padding-left: var(--paddingBasic);
+    height: var(--tabsHeight);
+}

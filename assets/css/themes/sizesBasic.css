@@ -1,8 +1,11 @@
 :root {
     /* Abstände */
     --distanceBasic: 10px;
+    --distanceBasicNeg: -10px;
     --distanceNear: 5px;
+    --distanceNearNeg: -5px;
     --distanceFar: 20px;
+    --distanceFarNeg: -20px;
 
     /* Radii */
     --radiusBasic: 10px;
@@ -12,6 +15,7 @@
     --widthUI: 300px;
     --widthScrollbar: 8px;
     --headerHeight: 30px;
+    --tabsHeight: 30px;
     --footerHeight: 50px;
     --borderWidth: 1px;
     --paddingBasic: 5px;

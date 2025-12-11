@@ -1,0 +1,27 @@
+
+.tab {
+    position: relative;
+    display: inline-block;
+    padding: var(--paddingBasic);
+    padding-left: var(--paddingBasic);
+    padding-right: var(--paddingBasic);
+    margin-right: calc(var(--paddingBasic) / 2);
+    margin-top: calc(var(--paddingBasic));
+    background-color: var(--backgroundColor);
+    border-radius: var(--radiusNarrow) var(--radiusNarrow) 0 0;
+    cursor: pointer;
+    top:0;
+    vertical-align: bottom;
+    border: var(--borderWidth) solid var(--drawColor);
+    border-bottom: none;
+}
+.tab:hover {
+    background-color: #fff;
+    padding-bottom: calc(var(--paddingBasic)*2);
+    margin-top: 0;
+}
+.tab.active {
+    background-color: var(--contrastColor2);
+    border-color: #fff;
+    color: #fff;
+}

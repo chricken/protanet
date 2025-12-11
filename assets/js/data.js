@@ -1,8 +1,13 @@
 "use strict";
 
+import Volume from "./classes/Volume.js";
+
 const data = {
     work: {},
-    volumes: [],
+    volumes: [
+        new Volume({title: 'Feuer und Erz'}),
+        new Volume({title: 'Kaltes Feuer'}),
+    ],
     chapters: [],
     segments: [],
 

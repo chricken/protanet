@@ -2,38 +2,39 @@
 
 import dom from '../../dom.js';
 import elements from '../../elements.js';
-import selectbox from '../../components/selectbox/selectbox.js';
-import settings from "../../settings.js";
+import data from '../../data.js';
+
+import CompTab from '../../components/tab/tab.js';
 
 const tabs = () => {
-    elements.mainmenu.innerHTML = '';
+    elements.tabs.innerHTML = '';
 
-    let options = Object.values(settings.availableThemes).map(theme => {
-        return {
-            value: theme.filename,
-            text: theme.name
-        }
-    });
+    data.volumes.forEach((volume , index)=> {
+        console.log(volume);
+        CompTab({
+            legend: `${index}: ${volume.title}`,
+        })
+    })
 
-    console.log(options);
 
-    // Farbthemes
-    selectbox({
-        parent: elements.mainmenu,
-        options,
-        selected: 0,
-        legend: 'Theme',
-        callback(value){
-            console.log('Selection: ', value);
-            elements.theme.remove();
-            elements.theme = dom.create({
-                parent:document.head,
-                tagName: 'link',
-                attr: {
-                    rel: 'stylesheet',
-                    href: `assets/css/themes/${value.value}`
-                }
-            })
+
+    CompTab({
+        legend: '+ Add Volume',
+        callback(){}
+    })
+
+    CompTab(({
+        legend: 'Graph',
+        active: true,
+        callback(){}
+    }))
+
+    dom.create({
+        tagName: 'link',
+        parent: elements.tabs,
+        attr: {
+            rel: 'stylesheet',
+            href: 'assets/js/views/tabs/tabs.css'
         }
     })
 }
