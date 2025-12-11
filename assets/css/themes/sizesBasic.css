@@ -18,10 +18,11 @@
     --tabsHeight: 30px;
     --footerHeight: 50px;
     --borderWidth: 1px;
-    --paddingBasic: 5px;
     --paddingNarrow: 3px;
+    --paddingBasic: 5px;
+    --paddingWide: 10px;
 
     --fontSizeBasic: 14px;
-    --fontSizeSmall: 10px;
+    --fontSizeSmall: 12px;
     --fontSizeLarge: 16px;
 }

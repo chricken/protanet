@@ -4,6 +4,7 @@
 @import './content.css';
 @import './tabs.css';
 @import './main.css';
+@import './fonts.css';
 
 :root {
 
@@ -14,6 +15,7 @@ html {
     min-height: 100%;
     color: var(--textColor);
     background-color: var(--backgroundColorBG);
+    font-family: Museo500, Arial, Helvetica, sans-serif;
 }
 
 .distanceHorz {

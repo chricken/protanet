@@ -1,4 +1,4 @@
-.parentInputText {
+.parentInputMultiline {
     position: relative;
     display: block;
     padding-top: var(--paddingBasic);
@@ -14,9 +14,10 @@
         content: ': '
     }
 
-    input {
+    textarea {
         position: relative;
         display: inline-block;
         width: 300px;
+        height:100px;
     }
 }

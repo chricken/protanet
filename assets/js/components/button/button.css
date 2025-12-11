@@ -1,0 +1,8 @@
+button.btn {
+    position: relative;
+    display: inline-block;
+    padding: var(--paddingBasic);
+    padding-left: var(--paddingWide);
+    padding-right: var(--paddingWide);
+    font-size: var(--fontSizeLarge);
+}

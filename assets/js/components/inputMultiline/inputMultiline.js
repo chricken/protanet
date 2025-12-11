@@ -3,7 +3,7 @@
 import dom from '../../dom.js';
 import elements from '../../elements.js';
 
-const inputText = ({
+const inputMultiline = ({
                       legend = null,
                       parent = null,
                       callback = value => {
@@ -12,7 +12,7 @@ const inputText = ({
 
     const elContainer = dom.create({
         parent,
-        cssClassName: 'parentInputText transit',
+        cssClassName: 'parentInputMultiline transit',
     })
 
     dom.create({
@@ -23,10 +23,7 @@ const inputText = ({
 
     dom.create( {
         parent: elContainer,
-        tagName: 'input',
-        attr: {
-            type: 'text'
-        },
+        tagName: 'textarea',
         listeners: {
             input(evt) {
                 callback(evt.target.value);
@@ -39,9 +36,9 @@ const inputText = ({
         parent: elContainer,
         attr: {
             rel: 'stylesheet',
-            href: 'assets/js/components/InputText/InputText.css'
+            href: 'assets/js/components/inputMultiline/inputMultiline.css'
         }
     })
 }
 
-export default inputText
+export default inputMultiline

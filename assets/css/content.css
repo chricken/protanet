@@ -26,6 +26,9 @@ content {
             border-radius: var(--radiusBasic) var(--radiusBasic) 0 0;
             padding: var(--paddingBasic);
         }
+        topui:empty {
+            display: none;
+        }
 
         workbench  {
             padding-top: var(--paddingBasic);
