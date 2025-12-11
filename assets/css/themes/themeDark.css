@@ -2,10 +2,12 @@
 
     /* Grundfarben */
     --backgroundColor: #1e1e1e; /* Haupt-Hintergrund (dunkel) */
+    --backgroundColorHighlighted: #333; /* Haupt-Hintergrund (dunkel) */
     --backgroundColorShaded: #2d2d2d; /* Abgedunkelter-Hintergrund  */
     --backgroundColorBG: #121212; /* Hintergrund ganz hinten */
     --backgroundColorInputs: #2a2a2a;   /* Hintergrund für Inputfelder */
     --textColor: #ffffff; /* Primäre Textfarbe (hell) */
+    --textColorHighlighted: #ffffff; /* Primäre Textfarbe (hell) */
     --shadedTextColor: #b3b3b3; /* Abgeschwächte/sekundäre Textfarbe */
     --drawColor: #555555; /* Akzentfarbe für Linien/Highlights */
 

@@ -26,6 +26,10 @@ content {
             border-radius: var(--radiusBasic) var(--radiusBasic) 0 0;
             padding: var(--paddingBasic);
         }
+
+        workbench  {
+            padding-top: var(--paddingBasic);
+        }
     }
 
     /* Sidebar UI fixed width of 300px */

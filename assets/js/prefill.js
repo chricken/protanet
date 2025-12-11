@@ -2,13 +2,13 @@
 
 import elements from "./elements.js";
 
-import ViewMainMenu from "./views/mainmenu/mainmenu.js";
-import ViewTabs from "./views/tabs/tabs.js";
+import ViewMainMenu from "./views/MainMenu/MainMenu.js";
+import ViewTabs from "./views/Tabs/tabs.js";
 
 const prefill = {
-    basic(){
+    basic() {
         ViewMainMenu();
-       ViewTabs();
+        ViewTabs();
     }
 }
 

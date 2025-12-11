@@ -5,34 +5,41 @@ import elements from '../../elements.js';
 
 const menulink = ({
                       legend = null,
-                      parent = elements.mainMenu,
+                      parent = null,
                       callback = value => {
                       }
                   }) => {
 
     const elContainer = dom.create({
         parent,
-        cssClassName: 'parentMenulink transit',
+        cssClassName: 'parentInputText transit',
+    })
+
+    dom.create({
+        parent: elContainer,
+        cssClassName: 'legend transit',
+        content: legend
+    })
+
+    dom.create( {
+        parent: elContainer,
+        tagName: 'input',
+        attr: {
+            type: 'text'
+        },
         listeners: {
-            click() {
-                callback();
+            input(evt) {
+                callback(evt.target.value);
             }
         }
     })
-
-    const elLegend = dom.create({
-        parent: elContainer,
-        cssClassName: 'legend transit',
-        content: `${legend}: `
-    })
-
 
     dom.create({
         tagName: 'link',
         parent: elContainer,
         attr: {
             rel: 'stylesheet',
-            href: 'assets/js/components/menulink/menulink.css'
+            href: 'assets/js/components/InputText/InputText.css'
         }
     })
 }

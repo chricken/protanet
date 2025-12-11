@@ -1,0 +1,5 @@
+.worktitle {
+    position: relative;
+    display: inline-block;
+    margin-right: var(--distanceBasic);
+}

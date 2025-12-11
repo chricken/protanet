@@ -2,10 +2,12 @@
 
     /* Grundfarben */
     --backgroundColor: #f0f9f0; /* Haupt-Hintergrund (sehr helles Grün) */
+    --backgroundColorHighlighted: #f0f9f0; /* Haupt-Hintergrund (dunkel) */
     --backgroundColorShaded: #e8f5e8; /* Abgedunkelter-Hintergrund (helles Olivgrün) */
     --backgroundColorBG: #6b8e23; /* Hintergrund ganz hinten (Olivgrün) */
     --backgroundColorInputs: #ffffff;   /* Hintergrund für Inputfelder (weiß bleibt) */
     --textColor: #2d4a2d; /* Primäre Textfarbe (dunkles Olivgrün) */
+    --textColorHighlighted: #081508; /* Primäre Textfarbe (hell) */
     --shadedTextColor: #4a6741; /* Abgeschwächte/sekundäre Textfarbe (mittleres Grün) */
     --drawColor: #7cb342; /* Akzentfarbe für Linien/Highlights (lebendiges Grün) */
 

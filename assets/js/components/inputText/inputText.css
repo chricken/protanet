@@ -1,0 +1,22 @@
+.parentInputText {
+    position: relative;
+    display: block;
+    padding-top: var(--paddingBasic);
+    padding-bottom: var(--paddingBasic);
+    border-bottom: var(--borderWidth) solid var(--backgroundColorShaded);
+
+    .legend {
+        position: relative;
+        display: inline-block;
+        width: 150px;
+    }
+    .legend::after {
+        content: ': '
+    }
+
+    input {
+        position: relative;
+        display: inline-block;
+        width: 300px;
+    }
+}

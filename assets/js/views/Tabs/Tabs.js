@@ -10,7 +10,7 @@ const tabs = () => {
     elements.tabs.innerHTML = '';
 
     data.volumes.forEach((volume , index)=> {
-        console.log(volume);
+        // console.log(volume);
         CompTab({
             legend: `${index}: ${volume.title}`,
         })
@@ -34,7 +34,7 @@ const tabs = () => {
         parent: elements.tabs,
         attr: {
             rel: 'stylesheet',
-            href: 'assets/js/views/tabs/tabs.css'
+            href: 'assets/js/views/Tabs/Tabs.css'
         }
     })
 }

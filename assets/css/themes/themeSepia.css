@@ -2,10 +2,12 @@
 
     /* Grundfarben */
     --backgroundColor: #f4f1e8; /* Haupt-Hintergrund (helles Sepia-Beige) */
+    --backgroundColorHighlighted: #e3d7ba; /* Haupt-Hintergrund (dunkel) */
     --backgroundColorShaded: #e6d7c3; /* Abgedunkelter-Hintergrund (warmes Sepia-Beige) */
     --backgroundColorBG: #8b4513; /* Hintergrund ganz hinten (kräftiges Sepia-Braun) */
     --backgroundColorInputs: #faf7f0;   /* Hintergrund für Inputfelder (cremiges Beige) */
     --textColor: #4a3728; /* Primäre Textfarbe (dunkles Sepia-Braun) */
+    --textColorHighlighted: #7c5744; /* Primäre Textfarbe (hell) */
     --shadedTextColor: #6b4e37; /* Abgeschwächte/sekundäre Textfarbe (mittleres Sepia) */
     --drawColor: #cd853f; /* Akzentfarbe für Linien/Highlights (warmer Sepia-Goldton) */
 
