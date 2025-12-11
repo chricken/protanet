@@ -10,7 +10,10 @@ tabs {
         position: relative;
         display: inline-block;
         padding: var(--distanceNear);
-        margin-right: var(--distanceNear);
+        padding-left: var(--distanceBasic);
+        padding-right: var(--distanceBasic);
+        margin-right: calc(var(--distanceNear) / 2);
         background-color: var(--backgroundColor);
+        border-radius: var(--radiusNarrow) var(--radiusNarrow) 0 0;
     }
 }

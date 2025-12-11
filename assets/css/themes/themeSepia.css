@@ -1,0 +1,16 @@
+:root {
+
+    /* Grundfarben */
+    --backgroundColor: #f4f1e8; /* Haupt-Hintergrund (helles Sepia-Beige) */
+    --backgroundColorShaded: #e6d7c3; /* Abgedunkelter-Hintergrund (warmes Sepia-Beige) */
+    --backgroundColorBG: #8b4513; /* Hintergrund ganz hinten (kräftiges Sepia-Braun) */
+    --backgroundColorInputs: #faf7f0;   /* Hintergrund für Inputfelder (cremiges Beige) */
+    --textColor: #4a3728; /* Primäre Textfarbe (dunkles Sepia-Braun) */
+    --shadedTextColor: #6b4e37; /* Abgeschwächte/sekundäre Textfarbe (mittleres Sepia) */
+    --drawColor: #cd853f; /* Akzentfarbe für Linien/Highlights (warmer Sepia-Goldton) */
+
+    /* Akzent- und Kontrastfarben */
+    --contrastColor1: #d2b48c; /* Kontrast 1 (heller Sepia-Goldton für Betonung) */
+    --contrastColor2: #a0522d; /* Kontrast 2 (dunkler Sepia-Rotbraun als Komplementärfarbe) */
+    --scrollbarThumbColor: #deb887;
+}

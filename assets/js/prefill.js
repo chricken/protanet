@@ -6,7 +6,8 @@ import ViewMainMenu from "./views/mainmenu/mainmenu.js";
 
 const prefill = {
     basic(){
-        ViewMainMenu()
+        ViewMainMenu();
+        // Tabs();
     }
 }
 

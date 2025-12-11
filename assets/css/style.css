@@ -16,6 +16,12 @@ html {
     background-color: var(--backgroundColorBG);
 }
 
+.distanceHorz {
+    position: relative;
+    display: inline-block;
+    width: var(--distanceFar);
+}
+
 .transit {
     transition: all 0.3s ease-in-out;
 }

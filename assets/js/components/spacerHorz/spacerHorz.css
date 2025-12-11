@@ -1,0 +1,6 @@
+.spacerHorz{
+    position: relative;
+    display: inline-block;
+    margin-right: var(--distanceBasic);
+    margin-left: var(--distanceBasic);
+}

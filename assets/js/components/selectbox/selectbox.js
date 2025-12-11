@@ -136,7 +136,7 @@ const selectbox = ({
         parent: container,
         attr: {
             rel: 'stylesheet',
-            href: 'assets/js/components/checkbox/selectbox.css'
+            href: 'assets/js/components/selectbox/selectbox.css'
         }
     })
 }

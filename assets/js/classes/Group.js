@@ -3,6 +3,8 @@
 import helpers from "../helpers";
 import db from "../db";
 
+// Volk, Firma, Freundeskreis, Verein, Organisation
+
 class Group {
     constructor({
                     id = null,
@@ -11,10 +13,12 @@ class Group {
                     members = [],
                     founded = null,
                     destroyed = null,
+                    type = null,
                     crDate = null,
                     chDate = null,
                 }) {
-        Object.assign(this, {id, name, description, members, founded, destroyed, chDate, crDate});
+
+        Object.assign(this, {id, name, type, description, members, founded, destroyed, chDate, crDate});
 
         if (!crDate) this.crDate = Date.now();
         if (!chDate) this.chDate = Date.now();
@@ -34,6 +38,7 @@ class Group {
     connect() {
 
     }
+
     save() {
         this.chDate = Date.now();
         return db.storeData({

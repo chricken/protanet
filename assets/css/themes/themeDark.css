@@ -1,21 +1,5 @@
 :root {
 
-    /* Abstände */
-    --distanceBasic: 10px;
-    --distanceNear: 5px;
-    --distanceFar: 20px;
-
-    /* Radii */
-    --radiusBasic: 10px;
-
-    /* Größen */
-    --widthUI: 300px;
-    --widthScrollbar: 8px;
-    --headerHeight: 30px;
-    --footerHeight: 50px;
-    --borderWidth: 1px;
-    --paddingBasic: 5px;
-
     /* Grundfarben */
     --backgroundColor: #1e1e1e; /* Haupt-Hintergrund (dunkel) */
     --backgroundColorShaded: #2d2d2d; /* Abgedunkelter-Hintergrund  */

@@ -1,0 +1,16 @@
+:root {
+
+    /* Grundfarben */
+    --backgroundColor: #2d2d2d; /* Haupt-Hintergrund (dunkles Grau) */
+    --backgroundColorShaded: #1a1a1a; /* Abgedunkelter-Hintergrund (sehr dunkles Grau) */
+    --backgroundColorBG: #000000; /* Hintergrund ganz hinten (schwarz) */
+    --backgroundColorInputs: #404040;   /* Hintergrund für Inputfelder (mitteldunkles Grau) */
+    --textColor: #f5f5f5; /* Primäre Textfarbe (helles Weiß/Grau) */
+    --shadedTextColor: #cccccc; /* Abgeschwächte/sekundäre Textfarbe (mittleres Grau) */
+    --drawColor: #e0e0e0; /* Akzentfarbe für Linien/Highlights (helles Grau) */
+
+    /* Akzent- und Kontrastfarben */
+    --contrastColor1: #ffffff; /* Kontrast 1 (reines Weiß für Betonung) */
+    --contrastColor2: #b0b0b0; /* Kontrast 2 (helles Grau als Komplementärfarbe) */
+    --scrollbarThumbColor: #808080;
+}

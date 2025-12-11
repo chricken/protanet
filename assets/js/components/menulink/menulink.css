@@ -1,0 +1,15 @@
+.parentMenulink {
+    position: relative;
+    display: inline-block;
+    padding: var(--paddingNarrow);
+    padding-left: var(--paddingBasic);
+    padding-right: var(--paddingBasic);
+    margin-right: var(--paddingBasic);
+    /*background-color: var(--backgroundColor);*/
+    font-size: var(--fontSizeSmall);
+    cursor: pointer;
+}
+.parentMenulink:hover {
+    font-size: var(--fontSizeBasic);
+    font-weight: bold;
+}

@@ -10,6 +10,14 @@ const settings = {
             name: 'Pink',
             filename:'themePink.css'
         },
+        green:{
+            name: 'Green',
+            filename:'themeOlive.css'
+        },
+        sepia:{
+            name: 'Sepia',
+            filename:'themeSepia.css'
+        },
         dark:{
             name: 'Dark',
             filename:'themeDark.css'
@@ -17,9 +25,14 @@ const settings = {
         hicontrast:{
             name: 'High Contrast',
             filename:'themeHiContrast.css'
+        },
+        inverted:{
+            name: 'Inverted',
+            filename:'themeInverted.css'
         }
     },
-    selecedTheme: 'basic'
+    selecedTheme: 'basic',
+
 }
 
 export default settings;

@@ -1,14 +1,20 @@
 "use strict";
 
 const data = {
-    persons: [
+    work: {},
+    volumes: [],
+    chapters: [],
+    segments: [],
 
-    ],
+    persons: [],
     groups: [],
+    roles: [],
+
     places: [],
     events: [],
-    objects: [],
+    things: [],
+
+    notes: [],
     images: [],
-    roles: []
 }
 export default data;

@@ -1,0 +1,16 @@
+:root {
+
+    /* Grundfarben */
+    --backgroundColor: #f0f9f0; /* Haupt-Hintergrund (sehr helles Grün) */
+    --backgroundColorShaded: #e8f5e8; /* Abgedunkelter-Hintergrund (helles Olivgrün) */
+    --backgroundColorBG: #6b8e23; /* Hintergrund ganz hinten (Olivgrün) */
+    --backgroundColorInputs: #ffffff;   /* Hintergrund für Inputfelder (weiß bleibt) */
+    --textColor: #2d4a2d; /* Primäre Textfarbe (dunkles Olivgrün) */
+    --shadedTextColor: #4a6741; /* Abgeschwächte/sekundäre Textfarbe (mittleres Grün) */
+    --drawColor: #7cb342; /* Akzentfarbe für Linien/Highlights (lebendiges Grün) */
+
+    /* Akzent- und Kontrastfarben */
+    --contrastColor1: #8bc34a; /* Kontrast 1 (helles Grün für Betonung) */
+    --contrastColor2: #d4822a; /* Kontrast 2 (warmes Orange als Komplementärfarbe) */
+    --scrollbarThumbColor: #9ccc65;
+}
