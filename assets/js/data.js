@@ -3,7 +3,7 @@
 import Volume from "./classes/Volume.js";
 
 const data = {
-    work: {},
+    work: null,
     volumes: [],
     chapters: [],
     segments: [],

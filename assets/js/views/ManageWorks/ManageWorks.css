@@ -1,0 +1,7 @@
+.parentSelectbox {
+    position: relative;
+    display: block;
+    border: 1px solid var(--drawColor);
+    padding: var(--paddingBasic);
+
+}

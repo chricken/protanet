@@ -1,7 +1,7 @@
 "use strict"
 
 import helpers from "../helpers";
-import db from "../db";
+import db from "../db.js";
 
 // Volk, Firma, Freundeskreis, Verein, Organisation
 

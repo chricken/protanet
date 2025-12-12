@@ -1,7 +1,7 @@
 "use strict"
 
 import helpers from "../helpers.js";
-import db from "../db";
+import db from "../db.js";
 
 class Note {
     constructor({

@@ -2,13 +2,10 @@
 
 import dom from '../../dom.js';
 import elements from '../../elements.js';
-import settings from "../../settings.js";
-import data from '../../data.js';
 
 import CompInputText from '../../components/inputText/inputText.js';
 import CompInputMultiline from '../../components/inputMultiline/inputMultiline.js';
 import CompButton from '../../components/button/button.js';
-import CompSpacerHorz from '../../components/spacerHorz/spacerHorz.js';
 
 const CreateNewWork = () => {
     elements.workspaceUI.innerHTML = '';
@@ -64,6 +61,16 @@ const CreateNewWork = () => {
         legend: 'Create Work',
         callback() {
             console.log(work);
+        }
+    })
+
+
+    dom.create({
+        tagName: 'link',
+        parent: elements.tabs,
+        attr: {
+            rel: 'stylesheet',
+            href: 'assets/js/views/CreateNewWork/CreateNewWork.css'
         }
     })
 

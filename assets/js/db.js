@@ -4,7 +4,7 @@
 Modul für das Management der indexedDB
 */
 
-let dbVersion = 2;
+let dbVersion = 3;
 
 const dbNames = {
     persons: {
@@ -25,13 +25,13 @@ const dbNames = {
     images: {
         name: 'protanet_images',
     },
-    werke: {
+    works: {
         name: 'protanet_werke',
     },
-    baende: {
+    volumes: {
         name: 'protanet_baende',
     },
-    kapitel: {
+    chapters: {
         name: 'protanet_kapitel',
     },
     segments: {
@@ -96,6 +96,7 @@ const db = {
         if (payload === null || typeof payload !== 'object') {
             return Promise.reject(new Error('payload must be an object'));
         }
+        console.log(dbName);
 
         dbName = dbNames[dbName].name;
 
@@ -219,6 +220,8 @@ const db = {
             });
             return out;
         };
+
+        dbName = dbNames[dbName].name;
 
         return this.init().then((database) => {
             return new Promise((resolve, reject) => {
