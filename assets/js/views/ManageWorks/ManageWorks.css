@@ -1,7 +1,21 @@
-.parentSelectbox {
+.parentLoadWorks {
     position: relative;
-    display: block;
+    display: flex;
     border: 1px solid var(--drawColor);
-    padding: var(--paddingBasic);
+
+    .parentSelectList {
+        position: relative;
+        display: block;
+        border: 1px solid var(--drawColor);
+        padding: var(--paddingBasic);
+
+
+    }
+    .parentInfoWork{
+        position: relative;
+        min-height:100px;
+        /*border: 1px solid var(--drawColor);*/
+        padding: var(--paddingBasic);
+    }
 
 }

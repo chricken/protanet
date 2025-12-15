@@ -3,33 +3,29 @@
 import dom from '../../dom.js';
 
 const selectList = ({
-                       legend = null,
-                       parent = null,
-                       // Options enthalten Objekte mit den Attributen
-                       // value, text, isSelectable, isComment
-                       options = [],
-                       // Selected kann eine Number oder ein String sein.
-                       // Ein String wird dann aus der Liste ausgewählt eine Number bezeichnet einfach den Indes
-                       selected = null,
-                       // Wenn hier ein Wert übergeben wird, wird dieser über der
-                       // Liste der Optionen eingehängt. Z.B. "Bitte wählen"
-                       defaultValue = null,
-                       // Ist dieses Element in einen Container gekapselt
-                       capsuled = false,
-                       callback = value => {
-                       }
-                   }) => {
+                        legend = null,
+                        parent = null,
+                        // Options enthalten Objekte mit den Attributen
+                        // value, text, isSelectable, isComment
+                        options = [],
+                        // Selected kann eine Number oder ein String sein.
+                        // Ein String wird dann aus der Liste ausgewählt eine Number bezeichnet einfach den Indes
+                        selected = null,
+                        // Wenn hier ein Wert übergeben wird, wird dieser über der
+                        // Liste der Optionen eingehängt. Z.B. "Bitte wählen"
+                        defaultValue = null,
+                        // Ist dieses Element in einen Container gekapselt
+                        capsuled = false,
+                        cssClassName = null,
+                        callback = value => {
+                        }
+                    }) => {
 
     if (capsuled) {
         parent = dom.create({
-            cssClassName: 'parentSelectbox',
+            cssClassName: `parentSelectList ${cssClassName || ''}`,
             parent
         })
-    }
-
-    const selectHandler = () => {
-        elValue.innerHTML = selected.text || selected.value;
-        callback(selected);
     }
 
     dom.create({
@@ -109,8 +105,7 @@ const selectList = ({
             content: option.text,
             listeners: {
                 click() {
-                    selected = option;
-                    selectHandler()
+                    callback(option);
                 }
             }
         })

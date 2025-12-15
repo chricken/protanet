@@ -3,18 +3,16 @@
 import dom from '../../dom.js';
 import elements from '../../elements.js';
 
-import CompInputText from '../../components/inputText/inputText.js';
-import CompInputMultiline from '../../components/inputMultiline/inputMultiline.js';
-import CompButton from '../../components/button/button.js';
+import CompInputText from '../inputText/inputText.js';
+import CompInputMultiline from '../inputMultiline/inputMultiline.js';
+import CompButton from '../button/button.js';
 
 const CreateNewWork = () => {
-    elements.workspaceUI.innerHTML = '';
-    elements.workbench.innerHTML = '';
 
     const work = {}
 
     dom.create({
-        tagName: 'h1',
+        tagName: 'h3',
         parent: elements.workbench,
         content: 'Create New Work'
     })
@@ -70,7 +68,7 @@ const CreateNewWork = () => {
         parent: elements.tabs,
         attr: {
             rel: 'stylesheet',
-            href: 'assets/js/views/CreateNewWork/CreateNewWork.css'
+            href: 'assets/js/components/CreateNewWork/CreateNewWork.css'
         }
     })
 

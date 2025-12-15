@@ -1,0 +1,22 @@
+.parentInfoBox {
+    position: relative;
+    display: flex;
+    padding-top: var(--paddingBasic);
+    padding-bottom: var(--paddingBasic);
+
+    .legend {
+        position: relative;
+        flex-basis: 100px;
+        flex-grow: 0; /* Verhindert, dass es wächst */
+        flex-shrink: 0; /* Verhindert, dass es schrumpft */
+        color: var(--shadedTextColor);
+    }
+    .legend::after {
+        content: ': '
+    }
+
+    .text {
+        position: relative;
+        flex-grow: 1;
+    }
+}

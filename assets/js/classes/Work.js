@@ -13,8 +13,9 @@ class Work {
                     roles = [],
                     crDate = null,
                     chDate = null,
+                    volumes = []
                 }) {
-        Object.assign(this, {id, title, description, image, summary, roles, chDate, crDate});
+        Object.assign(this, {id, title, description, image, summary, roles, chDate, crDate, volumes});
 
         if (!crDate) this.crDate = Date.now();
         if (!chDate) this.chDate = Date.now();

@@ -3,15 +3,16 @@
     display: inline-block;
 
     .list {
-        position: absolute;
+        position: relative;
         z-index: 100;
         top: 120%;
+        height: 150px;
         background-color: var(--backgroundColor);
         padding: var(--paddingBasic);
         border: 1px solid var(--drawColor);
         box-shadow: 0 0 10px var(--drawColor);
         border-radius: var(--radiusBasic);
-        overflow: hidden;
+        overflow: auto;
     }
 
 
