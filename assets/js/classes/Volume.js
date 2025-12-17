@@ -2,6 +2,8 @@
 
 import helpers from "../helpers.js";
 import db from "../db.js";
+import data from "../data.js";
+import Chapter from "./Chapter.js";
 
 class Volume {
     constructor({
@@ -13,13 +15,34 @@ class Volume {
                     roles = [],
                     crDate = null,
                     chDate = null,
+                    workID = null,
+                    chapters = []
                 }) {
-        Object.assign(this, {id,title, description, image, summary, roles, chDate, crDate});
+        Object.assign(this, {id, title, description, image, summary, roles, chDate, crDate, workID, chapters});
 
         if (!crDate) this.crDate = Date.now();
         if (!chDate) this.chDate = Date.now();
 
         if (!id) this.id = helpers.createID();
+
+        if (this.chapters.length == 0) {
+            const myChapter = new Chapter({
+                volumeID: this.id
+            });
+            this.chapters.push(myChapter.id);
+        } else {
+            // Wenn Chapters vorhanden sind, lade diese aus der Datenbank und hänge sie in data ein
+            this.chapters.forEach(chapterID => {
+                db.loadData({
+                    dbName: 'chapters',
+                    id: chapterID,
+                }).then(chapter => {
+                    data.chapters.push(new Chapter(chapter));
+                }).catch(
+                    console.warn
+                )
+            })
+        }
     }
 
     update() {
@@ -33,8 +56,10 @@ class Volume {
     connect() {
 
     }
+
     save() {
         this.chDate = Date.now();
+        this.chapters.forEach(chapter => chapter.save());
         return db.storeData({
             dbName: 'volumes',
             payload: this

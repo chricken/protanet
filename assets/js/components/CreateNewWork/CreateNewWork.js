@@ -6,10 +6,11 @@ import elements from '../../elements.js';
 import CompInputText from '../inputText/inputText.js';
 import CompInputMultiline from '../inputMultiline/inputMultiline.js';
 import CompButton from '../button/button.js';
+import Work from "../../classes/Work.js";
 
 const CreateNewWork = () => {
 
-    const work = {}
+    const work = new Work();
 
     dom.create({
         tagName: 'h3',
@@ -58,7 +59,7 @@ const CreateNewWork = () => {
         parent: elements.workbench,
         legend: 'Create Work',
         callback() {
-            console.log(work);
+            work.save();
         }
     })
 

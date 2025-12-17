@@ -4,7 +4,7 @@
 Modul für das Management der indexedDB
 */
 
-let dbVersion = 3;
+let dbVersion = 6;
 
 const dbNames = {
     persons: {
@@ -26,13 +26,13 @@ const dbNames = {
         name: 'protanet_images',
     },
     works: {
-        name: 'protanet_werke',
+        name: 'protanet_works',
     },
     volumes: {
-        name: 'protanet_baende',
+        name: 'protanet_volumes',
     },
     chapters: {
-        name: 'protanet_kapitel',
+        name: 'protanet_chapters',
     },
     segments: {
         name: 'protanet_segments',

@@ -41,11 +41,12 @@ const ManageWorks = () => {
 
     loadWorks().then(works => {
 
-        works = works.map(work => new Work(work));
+        // Hier darf die Klasse nicht verwendet werden, da sonst bei jeder Work das data-Objekt neu beschrieben würde
+        // works = works.map(work => new Work(work));
+
         const parentLoadWorks = dom.create({
             parent: parentWorksList,
             cssClassName: 'parentLoadWorks',
-
         })
 
         selectList({
@@ -72,7 +73,7 @@ const ManageWorks = () => {
                     })
 
                     CompInfoBox({
-                        legend:'Created',
+                        legend: 'Created',
                         text: new Date(selectedWork.crDate).toLocaleDateString(),
                         parent: parentInfoWork
                     })
@@ -95,7 +96,8 @@ const ManageWorks = () => {
                         legend: 'Load Work',
                         parent: parentInfoWork,
                         callback() {
-                            data.work = selectedWork;
+                            // Werk mit der Klasse anlegen, dadurch werden die Daten automatisch ins data-Objekt geschrieben
+                            new Work(selectedWork);
                             ViewTabs();
                         }
                     })
@@ -111,7 +113,7 @@ const ManageWorks = () => {
     })
 
 
-   CompCreateNewWork();
+    CompCreateNewWork();
 
 
     dom.create({
