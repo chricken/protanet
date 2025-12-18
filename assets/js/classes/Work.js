@@ -35,6 +35,7 @@ class Work {
         if (this.volumes.length == 0) {
             const myVolume = new Volume({workID: this.id});
             this.volumes.push(myVolume.id);
+            data.volumes.push(myVolume);
             // myVolume.save();
         } else {
             // Wenn Volumes vorhanden sind, lade diese aus der Datenbank und hänge sie in data ein
@@ -68,7 +69,11 @@ class Work {
 
     save() {
         this.chDate = Date.now();
-        this.volumes.forEach(volume => volume.save());
+
+        this.volumes.forEach(volume => {
+            volume = data.volumes.find(v => v.id == volume);
+            volume.save()
+        });
 
         return db.storeData({
             dbName: 'works',

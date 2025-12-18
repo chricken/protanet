@@ -30,6 +30,7 @@ class Volume {
                 volumeID: this.id
             });
             this.chapters.push(myChapter.id);
+            data.chapters.push(myChapter);
         } else {
             // Wenn Chapters vorhanden sind, lade diese aus der Datenbank und hänge sie in data ein
             this.chapters.forEach(chapterID => {
@@ -59,7 +60,10 @@ class Volume {
 
     save() {
         this.chDate = Date.now();
-        this.chapters.forEach(chapter => chapter.save());
+        this.chapters.forEach(chapter => {
+            chapter = data.chapters.find(c => c.id == chapter);
+            chapter.save()
+        });
         return db.storeData({
             dbName: 'volumes',
             payload: this

@@ -15,9 +15,24 @@ class Segment {
                     crDate = null,
                     chDate = null,
                     subsegments = [],
-                    paragraphs = []
+                    chapterID = null,
+                    parentSegmentID = null,
+                    paragraphs = [],
                 }) {
-        Object.assign(this, {id, title, description, image, summary, roles, chDate, crDate, subsegments, paragraphs});
+        Object.assign(this, {
+            id,
+            title,
+            description,
+            image,
+            summary,
+            roles,
+            chDate,
+            crDate,
+            subsegments,
+            chapterID,
+            parentSegmentID,
+            paragraphs
+        });
 
         if (!crDate) this.crDate = Date.now();
         if (!chDate) this.chDate = Date.now();

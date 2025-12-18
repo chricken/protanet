@@ -4,7 +4,7 @@
 Modul für das Management der indexedDB
 */
 
-let dbVersion = 6;
+let dbVersion = 7;
 
 const dbNames = {
     persons: {
@@ -141,6 +141,9 @@ const db = {
         if (id === null || id === undefined) {
             return Promise.reject(new Error('id is required'));
         }
+        if ( typeof id === 'object') {
+            return Promise.reject(new Error('id must be a string'));
+        }
 
         dbName = dbNames[dbName].name;
 
@@ -153,6 +156,8 @@ const db = {
 
                 const tx = database.transaction(dbName, 'readonly');
                 const store = tx.objectStore(dbName);
+                console.log(dbName);
+                console.log(id);
 
                 const request = store.get(id);
 

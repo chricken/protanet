@@ -30,7 +30,8 @@ class Chapter {
                 {chapterID: this.id}
             )
             this.segments.push(mySegment.id)
-        }else {
+            data.segments.push(mySegment);
+        } else {
             // Wenn Segments vorhanden sind, lade diese aus der Datenbank und hänge sie in data ein
             this.segments.forEach(segmentID => {
                 db.loadData({
@@ -59,7 +60,10 @@ class Chapter {
 
     save() {
         this.chDate = Date.now();
-        this.segments.forEach(segment => segment.save());
+        this.segments.forEach(segment => {
+            segment = data.segments.find(s => s.id == segment);
+            segment.save()
+        });
         return db.storeData({
             dbName: 'chapters',
             payload: this
