@@ -32,26 +32,32 @@ class Work {
         data.chapters = [];
         data.segments = [];
 
-        if (this.volumes.length == 0) {
-            const myVolume = new Volume({workID: this.id});
-            this.volumes.push(myVolume.id);
-            data.volumes.push(myVolume);
-            // myVolume.save();
-        } else {
-            // Wenn Volumes vorhanden sind, lade diese aus der Datenbank und hänge sie in data ein
-            this.volumes.forEach(volumeID => {
-                // Mehrere Promises parallel laufen lassen.
-                // Kein Promise.all(), weil unnötig
-                db.loadData({
-                    dbName: 'volumes',
-                    id: volumeID,
-                }).then(volume => {
-                    data.volumes.push(new Volume(volume));
-                }).catch(
-                    console.warn
-                )
-            })
-        }
+        return new Promise((resolve, reject) => {
+            if (this.volumes.length == 0) {
+                const myVolume = new Volume({workID: this.id});
+                this.volumes.push(myVolume.id);
+                data.volumes.push(myVolume);
+                // myVolume.save();
+                resolve(this);
+            } else {
+                // Wenn Volumes vorhanden sind, lade diese aus der Datenbank und hänge sie in data ein
+                this.volumes.forEach(volumeID => {
+                    // Mehrere Promises parallel laufen lassen.
+                    // Kein Promise.all(), weil unnötig
+                    db.loadData({
+                        dbName: 'volumes',
+                        id: volumeID,
+                    }).then(volume => {
+                        data.volumes.push(new Volume(volume));
+                    }).then(
+                        () => resolve(this)
+                    ).catch(
+                        console.warn
+                    )
+                })
+            }
+        })
+
 
     }
 

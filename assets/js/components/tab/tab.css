@@ -14,6 +14,20 @@
     vertical-align: bottom;
     border: var(--borderWidth) solid var(--drawColor);
     border-bottom: none;
+
+    .legend {
+        position: relative;
+        display: inline-block;
+    vertical-align: center;
+    }
+
+    canvas.btnEdit{
+        position: relative;
+        display: inline-block;
+        margin-left:var(--paddingNarrow);
+        margin-top:var(--paddingNarrow);
+    vertical-align: center;
+    }
 }
 .tab:hover {
     background-color: var(--backgroundColorHighlighted);

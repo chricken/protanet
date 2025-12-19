@@ -31,7 +31,7 @@ const MainMenu = () => {
     CompMenuLink({
         legend: 'Manage Works',
         callback() {
-            console.log('Create new Work');
+            // console.log('Create new Work');
 
             ViewManageWorks();
         }

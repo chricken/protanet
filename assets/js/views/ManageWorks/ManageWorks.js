@@ -61,7 +61,7 @@ const ManageWorks = () => {
             })),
             callback(selected) {
                 let selectedWork = works.find(work => work.id === selected.value)
-                console.log(selectedWork);
+                // console.log(selectedWork);
 
                 if (selected) {
                     parentInfoWork.innerHTML = '';
@@ -97,8 +97,15 @@ const ManageWorks = () => {
                         parent: parentInfoWork,
                         callback() {
                             // Werk mit der Klasse anlegen, dadurch werden die Daten automatisch ins data-Objekt geschrieben
-                            new Work(selectedWork);
-                            ViewTabs();
+                            new Work(selectedWork).then(
+                                work => {
+                                    console.log('data', data);
+                                    ViewTabs();
+                                }
+                            ).catch(
+                                console.warn
+                            )
+
                         }
                     })
 

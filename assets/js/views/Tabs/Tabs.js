@@ -9,24 +9,27 @@ import CompTab from '../../components/tab/tab.js';
 const tabs = () => {
     elements.tabs.innerHTML = '';
 
-    data.volumes.forEach((volume , index)=> {
-        // console.log(volume);
+    console.log('Volumes', data.volumes, data.volumes.length);
+    data.volumes.forEach((volume, index) => {
+        console.log('Volume Tab', volume);
         CompTab({
             legend: `${index}: ${volume.title}`,
+            editable: true,
         })
     })
 
 
-
     CompTab({
         legend: '+ Add Volume',
-        callback(){}
+        callback() {
+        }
     })
 
     CompTab(({
         legend: 'Graph',
         active: true,
-        callback(){}
+        callback() {
+        }
     }))
 
     dom.create({

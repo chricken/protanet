@@ -156,8 +156,8 @@ const db = {
 
                 const tx = database.transaction(dbName, 'readonly');
                 const store = tx.objectStore(dbName);
-                console.log(dbName);
-                console.log(id);
+                // console.log(dbName);
+                // console.log(id);
 
                 const request = store.get(id);
 
