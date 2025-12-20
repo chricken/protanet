@@ -11,6 +11,8 @@ import selectList from "../../components/selectList/selectList.js";
 import CompInfoBox from '../../components/InfoBox/InfoBox.js';
 import CompCreateNewWork from '../../components/CreateNewWork/CreateNewWork.js';
 import ViewTabs from '../Tabs/Tabs.js';
+import CompWorkTitle from '../../components/WorkTitle/WorkTitle.js';
+import ViewEditWork from '../EditWork/EditWork.js';
 
 // Classes
 import Work from "../../classes/Work.js";
@@ -101,6 +103,8 @@ const ManageWorks = () => {
                                 work => {
                                     console.log('data', data);
                                     ViewTabs();
+                                    CompWorkTitle();
+                                    ViewEditWork();
                                 }
                             ).catch(
                                 console.warn

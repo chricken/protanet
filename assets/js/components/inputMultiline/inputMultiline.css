@@ -9,6 +9,7 @@
         position: relative;
         display: inline-block;
         width: 150px;
+        vertical-align: top;
     }
     .legend::after {
         content: ': '

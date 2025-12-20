@@ -4,29 +4,49 @@ import dom from '../../dom.js';
 import elements from "../../elements.js";
 import data from "../../data.js";
 import spacerHorz from "../spacerHorz/spacerHorz.js";
+import ViewEditWork from "../../views/EditWork/EditWork.js";
 
 const workTitle = ({
                        parent = elements.mainMenu,
                    } = {}) => {
-    const elContainer = dom.create({
-        parent,
-        cssClassName: 'worktitle',
-    })
 
-    spacerHorz({
-        parent
-    });
+    if (elements.containerWorkTitle) {
+        let elContainer = dom.create({
+            parent: elements.containerWorkTitle,
+            cssClassName: 'worktitle active transit',
+            insert: 'after',
+            listeners: {
+                click(evt){
+                    evt.stopPropagation();
+                    console.log(`edit ${data?.work?.title}`);
+                    ViewEditWork();
+                }
+            }
+        })
+
+        elements.containerWorkTitle.remove();
+        elements.containerWorkTitle = elContainer;
+    } else {
+        elements.containerWorkTitle = dom.create({
+            parent,
+            cssClassName: 'worktitle',
+        })
+        spacerHorz({
+            parent
+        });
+    }
+
 
     dom.create({
         cssClassName: 'titleText',
-        parent: elContainer,
+        parent: elements.containerWorkTitle,
         content: data?.work?.title || 'Kein Projekt'
     })
 
 
     dom.create({
         tagName: 'link',
-        parent: elContainer,
+        parent: elements.containerWorkTitle,
         attr: {
             rel: 'stylesheet',
             href: 'assets/js/components/WorkTitle/WorkTitle.css'

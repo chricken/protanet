@@ -4,11 +4,12 @@ import dom from '../../dom.js';
 import elements from '../../elements.js';
 
 const inputText = ({
-                      legend = null,
-                      parent = null,
-                      callback = value => {
-                      }
-                  }) => {
+                       legend = null,
+                       parent = null,
+                       value = null,
+                       callback = value => {
+                       }
+                   }) => {
 
     const elContainer = dom.create({
         parent,
@@ -21,9 +22,10 @@ const inputText = ({
         content: legend
     })
 
-    dom.create( {
+    dom.create({
         parent: elContainer,
         tagName: 'input',
+        value,
         attr: {
             type: 'text'
         },
@@ -42,6 +44,8 @@ const inputText = ({
             href: 'assets/js/components/InputText/InputText.css'
         }
     })
+
+    return elContainer;
 }
 
 export default inputText

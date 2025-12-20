@@ -2,8 +2,10 @@
 
 import dom from '../../dom.js';
 import elements from '../../elements.js';
+import ViewEditVolume from "../../views/EditVolume/EditVolume.js";
 
 const tab = ({
+                 volume = null,
                  legend = null,
                  parent = elements.tabs,
                  active = false,
@@ -23,15 +25,22 @@ const tab = ({
         content: `${legend}: `
     })
 
-    /*
+
     if (editable) {
         const cEdit = dom.create({
             parent: elContainer,
             cssClassName: 'btnEdit',
             tagName: 'canvas',
             attr: {
-                width: 18,
-                height: 18
+                width: 12,
+                height: 12
+            },
+            listeners:{
+                click(evt){
+                    evt.stopPropagation();
+                    console.log(`edit ${legend}`);
+                    ViewEditVolume(volume);
+                }
             }
         })
 
@@ -39,10 +48,10 @@ const tab = ({
         ctx.fillStyle = '#333';
 
         // Zahnrad Parameter
-        const centerX = 9;
-        const centerY = 9;
-        const innerRadius = 6;
-        const outerRadius = 8;
+        const centerX = 6;
+        const centerY = 6;
+        const innerRadius = 5;
+        const outerRadius = 6;
         const teeth = 6;
         const toothAngle = (Math.PI * 2) / teeth;
         const toothWidth = toothAngle * 0.4;
@@ -95,7 +104,7 @@ const tab = ({
 
 
     }
-    */
+
     dom.create({
         tagName: 'link',
         parent: elContainer,

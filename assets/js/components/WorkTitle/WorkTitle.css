@@ -3,3 +3,15 @@
     display: inline-block;
     margin-right: var(--distanceBasic);
 }
+.worktitle.active {
+    font-size: var(--fontSizeLarge);
+    color: var(--contrastColor1);
+    background-color: var(--backgroundColor);
+    padding: var(--paddingBasic);
+    cursor: pointer;
+}
+.worktitle.active:hover {
+    background-color: var(--contrastColor1);;
+    color: var(--backgroundColor);
+
+}

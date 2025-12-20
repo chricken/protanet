@@ -47,6 +47,8 @@ const dom = {
     	Object.entries(styles).forEach(([key, value]) => neu.style[key] = value);
 
     	if (parent) {
+    		    parent[insert](neu);
+			/*
     	    if (insert == 'append') {
     		    parent.append(neu);
     		} else if (insert == 'prepend') {
@@ -56,6 +58,7 @@ const dom = {
     		} else if (insert == 'after') {
     		    parent.after(neu);
     		}
+			*/
     	}
 
     	return neu;

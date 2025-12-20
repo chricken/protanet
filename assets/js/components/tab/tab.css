@@ -10,31 +10,33 @@
     background-color: var(--backgroundColor);
     border-radius: var(--radiusNarrow) var(--radiusNarrow) 0 0;
     cursor: pointer;
-    top:0;
-    vertical-align: bottom;
+    top: 0;
+    vertical-align: top;
     border: var(--borderWidth) solid var(--drawColor);
     border-bottom: none;
 
     .legend {
         position: relative;
         display: inline-block;
-    vertical-align: center;
+        vertical-align: top;
     }
 
-    canvas.btnEdit{
+    canvas.btnEdit {
         position: relative;
         display: inline-block;
-        margin-left:var(--paddingNarrow);
-        margin-top:var(--paddingNarrow);
-    vertical-align: center;
+        margin-left: var(--paddingNarrow);
+        margin-top: var(--paddingNarrow);
+        vertical-align: top;
     }
 }
+
 .tab:hover {
     background-color: var(--backgroundColorHighlighted);
-    padding-bottom: calc(var(--paddingBasic)*2);
+    padding-bottom: calc(var(--paddingBasic) * 2);
     margin-top: 0;
     color: var(--textColorHighlighted);
 }
+
 .tab.active {
     background-color: var(--contrastColor2);
     border-color: #fff;

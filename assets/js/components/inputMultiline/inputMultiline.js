@@ -4,11 +4,12 @@ import dom from '../../dom.js';
 import elements from '../../elements.js';
 
 const inputMultiline = ({
-                      legend = null,
-                      parent = null,
-                      callback = value => {
-                      }
-                  }) => {
+                            legend = null,
+                            parent = null,
+                            value = null,
+                            callback = value => {
+                            }
+                        }) => {
 
     const elContainer = dom.create({
         parent,
@@ -21,7 +22,7 @@ const inputMultiline = ({
         content: legend
     })
 
-    dom.create( {
+    let ta = dom.create({
         parent: elContainer,
         tagName: 'textarea',
         listeners: {
@@ -30,6 +31,7 @@ const inputMultiline = ({
             }
         }
     })
+    ta.value = value;
 
     dom.create({
         tagName: 'link',
@@ -39,6 +41,8 @@ const inputMultiline = ({
             href: 'assets/js/components/inputMultiline/inputMultiline.css'
         }
     })
+
+    return elContainer;
 }
 
 export default inputMultiline
