@@ -5,4 +5,5 @@ button.btn {
     padding-left: var(--paddingWide);
     padding-right: var(--paddingWide);
     font-size: var(--fontSizeLarge);
+    cursor: pointer;
 }

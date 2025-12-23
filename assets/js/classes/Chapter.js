@@ -71,10 +71,15 @@ class Chapter {
     }
 
     delete() {
-        return db.deleteData({
-            dbName: 'chapters',
-            id: this.id
-        })
+        data.chapters = data.chapters.filter(c => c.id != this.id);
+        const v = data.volumes.find(v => v.id == this.volumeID)
+        v.chapters = v.chapters.filter(c => c != this.id);
+        return v.save().then(
+            db.deleteData({
+                dbName: 'chapters',
+                id: this.id
+            })
+        );
     }
 
 

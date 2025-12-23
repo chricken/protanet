@@ -16,7 +16,10 @@ const tab = ({
 
     const elContainer = dom.create({
         parent,
-        cssClassName: `tab transit ${active ? 'active' : ''}`
+        cssClassName: `tab transit ${active ? 'active' : ''}`,
+        listeners:{
+            click: callback
+        }
     })
 
     const elLegend = dom.create({
@@ -38,7 +41,6 @@ const tab = ({
             listeners:{
                 click(evt){
                     evt.stopPropagation();
-                    console.log(`edit ${legend}`);
                     ViewEditVolume(volume);
                 }
             }

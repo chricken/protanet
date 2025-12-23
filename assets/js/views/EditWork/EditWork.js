@@ -19,8 +19,6 @@ const EditWork = () => {
     elements.workbench.innerHTML = '';
 
     const work = data.work;
-    console.log('Edit', work);
-
 
     dom.create({
         tagName: 'h1',

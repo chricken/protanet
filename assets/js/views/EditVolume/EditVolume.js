@@ -11,11 +11,12 @@ import CompInputText from '../../components/inputText/inputText.js';
 import CompInputMultiline from '../../components/inputMultiline/inputMultiline.js';
 import CompInfoBox from '../../components/InfoBox/InfoBox.js';
 import CompWorkTitle from '../../components/WorkTitle/WorkTitle.js';
+import ViewTabs from '../Tabs/Tabs.js';
+import ViewEditWork from '../EditWork/EditWork.js';
 
 // Classes
 import Work from "../../classes/Work.js";
 import infoBox from "../../components/InfoBox/InfoBox.js";
-
 
 
 const EditVolume = (volume) => {
@@ -78,12 +79,26 @@ const EditVolume = (volume) => {
                     message: 'Volume saved successfully!',
                     type: 'success'
                 });
+                ViewTabs();
             }).catch(err => {
                 CompInfoBox({
                     message: 'Error saving volume: ' + err,
                     type: 'error'
                 });
             });
+        }
+    });
+
+    // Delete Button
+    CompButton({
+        legend: 'Delete Volume',
+        parent: elements.workbench,
+        callback: () => {
+            if (confirm(`Are you sure you want to delete volume "${volume.title}"?`))
+                volume.delete().then(() => {
+                    ViewTabs();
+                    ViewEditWork();
+                })
         }
     });
 

@@ -71,6 +71,16 @@ class Volume {
     }
 
     delete() {
+        // Zuerst Chapters löschen, weil die Chapters auch auf das Volume zugreifen wollen
+        this.chapters.forEach(chapter => {
+            chapter = data.chapters.find(c => c.id == chapter);
+            chapter.delete()
+        });
+
+        data.volumes = data.volumes.filter(v => v.id != this.id);
+        data.work.volumes = data.work.volumes.filter(v => v != this.id);
+        data.work.save();
+
         return db.deleteData({
             dbName: 'volumes',
             id: this.id

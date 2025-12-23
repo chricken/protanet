@@ -41,20 +41,18 @@ class Work {
                 resolve(this);
             } else {
                 // Wenn Volumes vorhanden sind, lade diese aus der Datenbank und hänge sie in data ein
-                this.volumes.forEach(volumeID => {
+                Promise.all(this.volumes.map(volumeID => {
                     // Mehrere Promises parallel laufen lassen.
                     // Kein Promise.all(), weil unnötig
-                    db.loadData({
+                  return  db.loadData({
                         dbName: 'volumes',
                         id: volumeID,
                     }).then(volume => {
                         data.volumes.push(new Volume(volume));
-                    }).then(
-                        () => resolve(this)
-                    ).catch(
-                        console.warn
-                    )
-                })
+                    })
+                })).then(
+                    () => resolve(this)
+                )
             }
         })
 

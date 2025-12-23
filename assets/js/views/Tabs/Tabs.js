@@ -5,13 +5,13 @@ import elements from '../../elements.js';
 import data from '../../data.js';
 
 import CompTab from '../../components/tab/tab.js';
+import Volume from "../../classes/Volume.js";
+import ViewEditVolume from "../EditVolume/EditVolume.js";
 
 const tabs = () => {
     elements.tabs.innerHTML = '';
 
-    console.log('Volumes', data.volumes, data.volumes.length);
     data.volumes.forEach((volume, index) => {
-        console.log('Volume Tab', volume);
         CompTab({
             volume,
             legend: `${index}: ${volume.title}`,
@@ -24,6 +24,16 @@ const tabs = () => {
         CompTab({
             legend: '+ Add Volume',
             callback() {
+                const myVolume = new Volume({
+                    workID: data.work.id,
+                })
+                data.work.volumes.push(myVolume.id);
+
+                data.volumes.push(myVolume);
+                myVolume.save();
+                data.work.save();
+                tabs();
+                ViewEditVolume(myVolume);
             }
         })
 

@@ -96,7 +96,6 @@ const db = {
         if (payload === null || typeof payload !== 'object') {
             return Promise.reject(new Error('payload must be an object'));
         }
-        console.log(dbName);
 
         dbName = dbNames[dbName].name;
 

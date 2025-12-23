@@ -98,10 +98,11 @@ const ManageWorks = () => {
                         legend: 'Load Work',
                         parent: parentInfoWork,
                         callback() {
-                            // Werk mit der Klasse anlegen, dadurch werden die Daten automatisch ins data-Objekt geschrieben
+                            // Werk mit der Klasse anlegen,
+                            // dadurch werden die Daten automatisch ins data-Objekt geschrieben
                             new Work(selectedWork).then(
-                                work => {
-                                    console.log('data', data);
+                                () => {
+                                    // Die Klasse Work schreibt die Daten schon in das data-Objekt
                                     ViewTabs();
                                     CompWorkTitle();
                                     ViewEditWork();
