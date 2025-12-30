@@ -5,20 +5,30 @@ import data from '../../data.js';
 import elements from '../../elements.js';
 
 const segmentListItem = ({
-                    segment,
-    parent = elements.ui,
-                 }) => {
+                             segment,
+                             parent = elements.ui,
+                         }) => {
 
     const elContainer = dom.create({
         parent,
         cssClassName: 'parentSegmentListItem transit',
     })
 
-     dom.create({
+    /*
+    const elPreLegend = dom.create({
+        parent: elOpener,
+        cssClassName: 'preLegend transit editable',
+        content: `Segment ${index + 1}:`,
+
+    })
+
+     */
+
+    const elLegend = dom.create({
         parent: elContainer,
         cssClassName: 'legend transit editable',
-        content: `Segment: ${segment.title ||  'No Title'}`,
-        attr:{
+        content: `${segment.title || 'No Title'}`,
+        attr: {
             contentEditable: true
         },
         listeners: {
@@ -32,13 +42,7 @@ const segmentListItem = ({
     dom.create({
         parent: elContainer,
         cssClassName: 'paragraphs transit',
-        content: `${segment.paragraphs.length} Paragraphs`
-    })
-
-    dom.create({
-        parent: elContainer,
-        cssClassName: 'subsegments transit',
-        content: `${segment.subsegments.length} Subsegments`
+        content: `${segment.paragraphs.length} Paragraphs, ${segment.subsegments.length} Subsegments`
     })
 
 

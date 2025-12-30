@@ -7,6 +7,11 @@
     margin-bottom: var(--distanceBasic);
     border-radius: var(--radiusBasic);
 
+    .preLegend {
+        position: relative;
+        font-size: .7em;
+    }
+
     .legend {
         position: relative;
         flex-basis: 90%;
@@ -48,6 +53,7 @@
         transform: rotate(90deg);
     }
 }
+
 .parentChapterListItem.active {
     background-color: var(--backgroundColorHighlighted);
     color: var(--textColorHighlighted);

@@ -55,13 +55,21 @@ const chapterListItem = ({
         cssClassName: 'opener transit',
     })
 
+    const elPreLegend = dom.create({
+        parent: elOpener,
+        cssClassName: 'preLegend transit',
+        content: `Chapter ${index + 1}:`,
+
+    })
+
     const elLegend = dom.create({
         parent: elOpener,
         cssClassName: 'legend transit editable',
-        content: `Chapter ${index + 1}: ${chapter.title || 'No Title'}`,
+        content: `${chapter.title || 'No Title'}`,
         attr: {
             contentEditable: true
         },
+
         listeners: {
             click(evt) {
                 evt.stopPropagation();

@@ -45,18 +45,22 @@ html {
     padding-left: var(--paddingBasic);
     padding-right: var(--paddingBasic);
     transition: all 300ms ease-in-out;
-    outline:1px solid var(--drawColor);
+    outline: 1px solid var(--drawColor);
 }
+
 .button:hover {
     cursor: pointer;
     color: var(--textColorHighlighted);
     background-color: var(--backgroundColorHighlighted);
-    outline:1px solid var(--textColor);
+    outline: 1px solid var(--textColor);
 }
+
 .buttonsContainer {
     position: relative;
-
+    margin-top: var(--distanceBasic);
+    /*margin-bottom: var(--distanceBasic);*/
 }
+
 .buttonsContainer .button {
     position: relative;
     display: inline-block;
