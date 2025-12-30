@@ -1,0 +1,34 @@
+.parentSegmentListItem {
+    position: relative;
+    padding-top: var(--paddingBasic);
+    padding-bottom: var(--paddingBasic);
+    display: none;
+    cursor: pointer;
+    color: var(--shadedTextColor);
+
+    .legend {
+        position: relative;
+        flex-basis: 90%;
+        flex-grow: 0; /* Verhindert, dass es wächst */
+        flex-shrink: 0; /* Verhindert, dass es schrumpft */
+        color: var(--textColor);
+    }
+
+    .legend::after {
+        content: ': '
+    }
+
+    .arrowIndicator:hover {
+        color: var(--contrastColor1);
+    }
+
+    .text {
+        position: relative;
+        flex-grow: 1;
+    }
+}
+
+
+.opened .parentSegmentListItem {
+    display: block;
+}

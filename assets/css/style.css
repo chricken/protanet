@@ -27,3 +27,38 @@ html {
 .transit {
     transition: all 0.3s ease-in-out;
 }
+
+.editable {
+    border: 1px solid transparent;
+    border-bottom: 1px dotted var(--textColor);
+}
+
+.editable:focus {
+    background-color: var(--backgroundColorInputs);
+    border: 1px solid var(--textColor);
+    outline: none;
+}
+
+.button {
+    cursor: pointer;
+    background-color: var(--backgroundColorInputs);
+    padding-left: var(--paddingBasic);
+    padding-right: var(--paddingBasic);
+    transition: all 300ms ease-in-out;
+    outline:1px solid var(--drawColor);
+}
+.button:hover {
+    cursor: pointer;
+    color: var(--textColorHighlighted);
+    background-color: var(--backgroundColorHighlighted);
+    outline:1px solid var(--textColor);
+}
+.buttonsContainer {
+    position: relative;
+
+}
+.buttonsContainer .button {
+    position: relative;
+    display: inline-block;
+    margin-right: var(--distanceBasic);
+}

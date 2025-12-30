@@ -25,7 +25,9 @@ const loadWorks = () => {
 }
 
 const ManageWorks = () => {
-    elements.workspaceUI.innerHTML = '';
+    console.log(elements);
+
+   // elements.workspaceUI.innerHTML = '';
     elements.workbench.innerHTML = '';
 
     const work = {}

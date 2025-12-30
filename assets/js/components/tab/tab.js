@@ -7,8 +7,10 @@ import ViewEditVolume from "../../views/EditVolume/EditVolume.js";
 const tab = ({
                  volume = null,
                  legend = null,
+                 index = null,
                  parent = elements.tabs,
                  active = false,
+
                  editable = false,
                  callback = value => {
                  }
@@ -17,15 +19,21 @@ const tab = ({
     const elContainer = dom.create({
         parent,
         cssClassName: `tab transit ${active ? 'active' : ''}`,
-        listeners:{
-            click: callback
-        }
     })
 
     const elLegend = dom.create({
         parent: elContainer,
         cssClassName: 'legend transit',
-        content: `${legend}: `
+        content: `${legend}: `,
+        listeners: {
+            click() {
+                callback({
+                    elLegend,
+                    index
+                })
+            },
+        },
+
     })
 
 
@@ -38,8 +46,8 @@ const tab = ({
                 width: 12,
                 height: 12
             },
-            listeners:{
-                click(evt){
+            listeners: {
+                click(evt) {
                     evt.stopPropagation();
                     ViewEditVolume(volume);
                 }

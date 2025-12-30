@@ -1,0 +1,54 @@
+.parentChapterListItem {
+    position: relative;
+    display: flex;
+    padding-top: var(--paddingBasic);
+    padding-bottom: var(--paddingBasic);
+    outline: 1px solid var(--drawColor);
+    margin-bottom: var(--distanceBasic);
+    border-radius: var(--radiusBasic);
+
+    .legend {
+        position: relative;
+        flex-basis: 90%;
+        flex-grow: 0; /* Verhindert, dass es wächst */
+        flex-shrink: 0; /* Verhindert, dass es schrumpft */
+        color: var(--textColor);
+    }
+
+    .legend::after {
+        content: ': '
+    }
+
+    .arrowIndicator {
+        transform-origin: 6px 11px;
+        transform: rotate(0deg);
+        cursor: pointer;
+    }
+
+    .text {
+        position: relative;
+        flex-grow: 1;
+    }
+}
+
+.addChapterButton {
+    position: relative;
+    color: var(--shadedTextColor);
+    margin-bottom: var(--distanceBasic);
+}
+
+.parentChapterListItem:hover {
+    color: var(--textColorHighlighted);
+    background-color: var(--backgroundColor);
+}
+
+.parentChapterListItem.opened {
+
+    .arrowIndicator {
+        transform: rotate(90deg);
+    }
+}
+.parentChapterListItem.active {
+    background-color: var(--backgroundColorHighlighted);
+    color: var(--textColorHighlighted);
+}

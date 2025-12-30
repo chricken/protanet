@@ -7,6 +7,7 @@ import data from '../../data.js';
 import CompTab from '../../components/tab/tab.js';
 import Volume from "../../classes/Volume.js";
 import ViewEditVolume from "../EditVolume/EditVolume.js";
+import ViewVolume from "../Volume/Volume.js";
 
 const tabs = () => {
     elements.tabs.innerHTML = '';
@@ -16,6 +17,17 @@ const tabs = () => {
             volume,
             legend: `${index}: ${volume.title}`,
             editable: true,
+            index,
+            callback({
+                         elLegend,
+                         index
+                     }) {
+                ViewVolume({
+                    volume,
+                    elLegend,
+                    index
+                })
+            },
         })
     })
 
@@ -24,9 +36,11 @@ const tabs = () => {
         CompTab({
             legend: '+ Add Volume',
             callback() {
+                // Wenn ich diesen Anklicke, gibt es ein neues Volume
                 const myVolume = new Volume({
                     workID: data.work.id,
                 })
+
                 data.work.volumes.push(myVolume.id);
 
                 data.volumes.push(myVolume);

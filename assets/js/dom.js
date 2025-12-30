@@ -4,13 +4,14 @@ import elements from './elements.js';
 
 const dom = {
     mapping() {
-        elements.tabs = document.querySelector('tabs')
+        elements.volume = document.querySelector('tabs')
         elements.workbench = document.querySelector('workbench')
-        elements.workspaceUI = document.querySelector('workspace topui')
+        elements.workspaceUI = document.querySelector('topui')
         elements.ui = document.querySelector('ui');
         elements.footer = document.querySelector('footer');
         elements.theme = document.querySelector('#theme');
         elements.mainMenu = document.querySelector('header');
+        elements.tabs = document.querySelector('tabs');
     },
     create({
         content = false,
