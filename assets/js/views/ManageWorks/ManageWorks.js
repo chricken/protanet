@@ -16,7 +16,6 @@ import ViewEditWork from '../EditWork/EditWork.js';
 
 // Classes
 import Work from "../../classes/Work.js";
-import infoBox from "../../components/InfoBox/InfoBox.js";
 
 const loadWorks = () => {
     return db.listAllData({

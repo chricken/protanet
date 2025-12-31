@@ -2,7 +2,6 @@
 
 import dom from '../../dom.js';
 import elements from '../../elements.js';
-import db from "../../db.js";
 import data from '../../data.js';
 
 // Components

@@ -5,9 +5,6 @@ import elements from '../../elements.js';
 import data from '../../data.js';
 import Chapter from "../../classes/Chapter.js";
 
-import CompTab from '../../components/tab/tab.js';
-import Volume from "../../classes/Volume.js";
-import ViewEditVolume from "../EditVolume/EditVolume.js";
 import CompChapterListItem from '../../components/ChapterListItem/ChapterListItem.js';
 
 const ViewVolume = ({

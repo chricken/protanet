@@ -10,6 +10,15 @@ const helpers = {
         id += Date.now().toString(36) + '_';
         id += this.counter.toString(36);
         return id;
+    },
+    debounce  (func, delay) {
+        let timeoutId;
+        return (...args) => {
+            clearTimeout(timeoutId);
+            timeoutId = setTimeout(() => {
+                func.apply(this, args);
+            }, delay);
+        }
     }
 }
 

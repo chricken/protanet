@@ -10,13 +10,10 @@ import CompButton from '../../components/button/button.js';
 import CompInputText from '../../components/inputText/inputText.js';
 import CompInputMultiline from '../../components/inputMultiline/inputMultiline.js';
 import CompInfoBox from '../../components/InfoBox/InfoBox.js';
-import CompWorkTitle from '../../components/WorkTitle/WorkTitle.js';
 import ViewTabs from '../Tabs/Tabs.js';
 import ViewEditWork from '../EditWork/EditWork.js';
 
 // Classes
-import Work from "../../classes/Work.js";
-import infoBox from "../../components/InfoBox/InfoBox.js";
 
 
 const EditVolume = (volume) => {

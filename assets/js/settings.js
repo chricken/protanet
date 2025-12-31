@@ -32,6 +32,7 @@ const settings = {
         }
     },
     selecedTheme: 'basic',
+    delayOfDebouncers: 1000
 
 }
 

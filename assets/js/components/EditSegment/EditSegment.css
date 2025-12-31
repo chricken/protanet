@@ -1,0 +1,16 @@
+.editSegment {
+    position: relative;
+    padding-top: var(--paddingBasic);
+    padding-bottom: var(--paddingBasic);
+    color: var(--shadedTextColor);
+
+.segmentText {
+    position: relative;
+    padding:var(--paddingBasic);
+    min-height: 150px;
+    max-height: 400px;
+    overflow: scroll;
+}
+
+}
+

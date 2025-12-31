@@ -6,17 +6,9 @@ import db from "../../db.js";
 import data from '../../data.js';
 
 // Components
-import CompButton from '../../components/button/button.js';
-import CompInputText from '../../components/inputText/inputText.js';
-import CompInputMultiline from '../../components/inputMultiline/inputMultiline.js';
-import CompInfoBox from '../../components/InfoBox/InfoBox.js';
-import CompWorkTitle from '../../components/WorkTitle/WorkTitle.js';
-import ViewTabs from '../Tabs/Tabs.js';
-import ViewEditWork from '../EditWork/EditWork.js';
+import CompEditSegment from '../../components/EditSegment/EditSegment.js';
 
 // Classes
-import Work from "../../classes/Work.js";
-import infoBox from "../../components/InfoBox/InfoBox.js";
 
 
 const EditChapter = ({
@@ -43,6 +35,15 @@ const EditChapter = ({
         }
     })
 
+    console.log(chapter);
+
+    chapter.segments.forEach(segmentID => {
+        const segment = data.segments.find(segment => segment.id === segmentID);
+        if (segment) {
+            CompEditSegment({segment});
+            segment.save();
+        }
+    })
 
     dom.create({
         tagName: 'link',
