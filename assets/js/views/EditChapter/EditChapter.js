@@ -35,8 +35,6 @@ const EditChapter = ({
         }
     })
 
-    console.log(chapter);
-
     chapter.segments.forEach(segmentID => {
         const segment = data.segments.find(segment => segment.id === segmentID);
         if (segment) {

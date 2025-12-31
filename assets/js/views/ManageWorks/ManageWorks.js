@@ -8,7 +8,7 @@ import data from '../../data.js';
 // Components
 import CompButton from '../../components/button/button.js';
 import selectList from "../../components/selectList/selectList.js";
-import CompInfoBox from '../../components/InfoBox/InfoBox.js';
+import CompInfoBox from '../../components/InfoBox_alt/InfoBox.js';
 import CompCreateNewWork from '../../components/CreateNewWork/CreateNewWork.js';
 import ViewTabs from '../Tabs/Tabs.js';
 import CompWorkTitle from '../../components/WorkTitle/WorkTitle.js';
@@ -24,7 +24,6 @@ const loadWorks = () => {
 }
 
 const ManageWorks = () => {
-    console.log(elements);
 
    // elements.workspaceUI.innerHTML = '';
     elements.workbench.innerHTML = '';

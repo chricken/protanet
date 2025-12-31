@@ -14,7 +14,6 @@ const chapterListItem = ({
                              onAddChapter = () => {
                              }
                          }) => {
-    console.log(chapter);
 
     const elContainer = dom.create({
         parent: elements.ui,
@@ -30,7 +29,7 @@ const chapterListItem = ({
                 ViewEditChapter({
                     chapter,
                     onChangeTitle: () => {
-                        elLegend.innerText = `Chapter ${index + 1}: ${chapter.title || 'No Title'}`;
+                        elLegend.innerText = `${chapter.title || 'No Title'}`;
                     }
                 })
             }
@@ -83,7 +82,6 @@ const chapterListItem = ({
 
     chapter.segments.forEach((segment, index) => {
         segment = data.segments.find(s => s.id === segment)
-        console.log('segment', segment);
         CompSegmentListItem({
             segment,
             parent: elOpener

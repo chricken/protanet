@@ -11,14 +11,14 @@ const helpers = {
         id += this.counter.toString(36);
         return id;
     },
-    debounce  (func, delay) {
+    debounce: (func, delay) => {
         let timeoutId;
         return (...args) => {
             clearTimeout(timeoutId);
             timeoutId = setTimeout(() => {
                 func.apply(this, args);
             }, delay);
-        }
+        };
     }
 }
 

@@ -8,7 +8,7 @@ import data from '../../data.js';
 import CompButton from '../../components/button/button.js';
 import CompInputText from '../../components/inputText/inputText.js';
 import CompInputMultiline from '../../components/inputMultiline/inputMultiline.js';
-import CompInfoBox from '../../components/InfoBox/InfoBox.js';
+import CompInfoBox from '../../components/InfoBox_alt/InfoBox.js';
 import CompWorkTitle from '../../components/WorkTitle/WorkTitle.js';
 
 

@@ -1,22 +1,26 @@
-.parentInfoBox {
-    position: relative;
+.info-icon {
+    cursor: pointer;
+    color: var(--drawColor);
+    font-weight: bold;
+    width: var(--distanceBasic);
+    height: var(--distanceBasic);
     display: flex;
-    padding-top: var(--paddingBasic);
-    padding-bottom: var(--paddingBasic);
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radiusBasic);
+    background-color: var(--backgroundColor);
+}
+.info-icon:hover {
+    color:var(--contrastColor1);
+}
 
-    .legend {
-        position: relative;
-        flex-basis: 100px;
-        flex-grow: 0; /* Verhindert, dass es wächst */
-        flex-shrink: 0; /* Verhindert, dass es schrumpft */
-        color: var(--shadedTextColor);
-    }
-    .legend::after {
-        content: ': '
-    }
-
-    .text {
-        position: relative;
-        flex-grow: 1;
-    }
+.info-box {
+    position: fixed;
+    padding: var(--paddingBasic);
+    background-color: var(--backgroundColorHighlighted);
+    border: var(--borderWidth) solid var(--drawColor);
+    border-radius: var(--radiusBasic);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: var(--widthUI);
+    word-wrap: break-word;
 }

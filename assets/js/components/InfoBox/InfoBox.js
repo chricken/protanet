@@ -3,37 +3,58 @@
 import dom from '../../dom.js';
 
 const infoBox = ({
-                     legend = null,
-                     parent = null,
-                     text = null
-                 }) => {
-
-    const elContainer = dom.create({
+    parent,
+    description,
+}) => {
+    const elInfoIcon = dom.create({
         parent,
-        cssClassName: 'parentInfoBox transit',
-    })
+        cssClassName: `info-icon transit`,
+        content: '?',
+        listeners: {
+            click: (evt) => {
+                evt.stopPropagation();
+                showInfoBox(evt.clientX, evt.clientY, description);
+            }
+        }
+    });
 
-    dom.create({
-        parent: elContainer,
-        cssClassName: 'legend transit',
-        content: legend
-    })
+    const showInfoBox = (x, y, description) => {
+        console.log('position', x, y, description);
 
-    dom.create({
-        parent: elContainer,
-        cssClassName: 'text transit',
-        content: text
-    })
+        const elInfoBox = dom.create({
+            parent: document.body,
+            cssClassName: 'info-box',
+            content: description,
+            styles: {
+                left: `${x}px`,
+                top: `${y}px`,
+                zIndex: 1000
+            },
+            listeners: {
+                click: (evt) => {
+                    evt.stopPropagation();
+                }
+            }
+        });
 
+        const hideInfoBox = () => {
+            document.body.removeChild(elInfoBox);
+            document.removeEventListener('click', hideInfoBox);
+        };
+
+        document.addEventListener('click', hideInfoBox);
+    };
 
     dom.create({
         tagName: 'link',
-        parent: elContainer,
+        parent,
         attr: {
             rel: 'stylesheet',
             href: 'assets/js/components/InfoBox/InfoBox.css'
         }
     })
-}
 
-export default infoBox
+    return elInfoIcon;
+};
+
+export default infoBox;

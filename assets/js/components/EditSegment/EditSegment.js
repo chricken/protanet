@@ -5,6 +5,8 @@ import elements from '../../elements.js';
 import helpers from '../../helpers.js';
 import settings from "../../settings.js";
 
+import CompInputText from '../inputText2/inputText.js';
+
 const editSegment = ({
                          segment,
                          parent = elements.workbench,
@@ -16,47 +18,62 @@ const editSegment = ({
     })
     console.log('segment', segment);
 
-
-    dom.create({
+    CompInputText({
+        text: segment.paragraphs.join('<br>'),
+        legend: segment.title || 'No Title',
         parent: elContainer,
-        content: segment.title,
-        args: {
-            contentEditable: true
-        },
-        listeners: {
-            input(evt) {
-                segment.title = evt.target.innerText;
-                segment.save();
-            }
-        }
-    })
-
-    let content = segment.paragraphs.map(p => p.text).join('<br>')
-
-    const elInput = dom.create({
-        parent: elContainer,
-        cssClassName: 'segmentText editable transit',
-        attr: {
-            contentEditable: true,
-        },
-        content,
-        listeners: {
-            input(evt) {
-                segment.paragraphs = evt.target.innerText.split('<br>').map(
-                    p => ({text: p})
-                );
-
-            }
-        }
-    })
-
-    elInput.addEventListener(
-        'input',
-        helpers.debounce(() => {
-            console.log('save', Date.now());
+        multiline: true,
+        description: 'Dies ist der Inhaltstext',
+        horizontal: false,
+        callback: title => {
+            segment.paragraphs = title.split('<br>');
             segment.save();
-        }, settings.delayOfDebouncers)
-    )
+        }
+    })
+    /*
+
+dom.create({
+    parent: elContainer,
+    content: segment.title,
+    args: {
+        contentEditable: true
+    },
+    listeners: {
+        input(evt) {
+            segment.title = evt.target.innerText;
+            segment.save();
+        }
+    }
+})
+
+let content = segment.paragraphs.map(p => p.text).join('<br>')
+
+const elInput = dom.create({
+    parent: elContainer,
+    cssClassName: 'segmentText editable transit',
+    attr: {
+        contentEditable: true,
+    },
+    content,
+    listeners: {
+        input(evt) {
+            segment.paragraphs = evt.target.innerText.split('<br>').map(
+                p => ({text: p})
+            );
+
+        }
+    }
+})
+
+elInput.addEventListener(
+    'input',
+    helpers.debounce(() => {
+        console.log('save', Date.now());
+        segment.save();
+    }, settings.delayOfDebouncers)
+)
+
+     */
 
     dom.create({
         tagName: 'link',
