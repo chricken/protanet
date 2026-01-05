@@ -3,9 +3,11 @@
 import dom from '../../dom.js';
 
 const infoBox = ({
-    parent,
-    description,
-}) => {
+                     parent,
+                     description,
+                     onEdit = () => {
+                     }
+                 }) => {
     const elInfoIcon = dom.create({
         parent,
         cssClassName: `info-icon transit`,
@@ -18,13 +20,15 @@ const infoBox = ({
         }
     });
 
-    const showInfoBox = (x, y, description) => {
-        console.log('position', x, y, description);
+    const showInfoBox = (x, y, desc) => {
 
         const elInfoBox = dom.create({
             parent: document.body,
             cssClassName: 'info-box',
-            content: description,
+            content: desc,
+            attr: {
+                contentEditable: true,
+            },
             styles: {
                 left: `${x}px`,
                 top: `${y}px`,
@@ -33,6 +37,11 @@ const infoBox = ({
             listeners: {
                 click: (evt) => {
                     evt.stopPropagation();
+                },
+                input: (evt) => {
+                    desc = evt.target.innerText;
+                    description = evt.target.innerText;
+                    onEdit(description);
                 }
             }
         });

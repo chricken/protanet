@@ -2,7 +2,7 @@
     position: relative;
     padding-top: var(--paddingBasic);
     padding-bottom: var(--paddingBasic);
-    color: var(--shadedTextColor);
+    color: var(--textColor);
 
 .segmentText {
     position: relative;

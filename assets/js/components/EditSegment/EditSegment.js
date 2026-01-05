@@ -18,15 +18,34 @@ const editSegment = ({
     })
     console.log('segment', segment);
 
+    dom.create({
+        parent: elContainer,
+        content: `Segment ${segment.id}`,
+    })
+
     CompInputText({
-        text: segment.paragraphs.join('<br>'),
+        text: segment.paragraphs.join('\n'),
         legend: segment.title || 'No Title',
         parent: elContainer,
         multiline: true,
-        description: 'Dies ist der Inhaltstext',
+        description: segment.description || 'No Description',
         horizontal: false,
-        callback: title => {
-            segment.paragraphs = title.split('<br>');
+        onEditText: ({
+                         text = ''
+                     }) => {
+            segment.paragraphs = text.split('\n');
+            segment.save();
+        },
+        onEditLegend: ({
+                           legend = '',
+                       }) => {
+            segment.title = legend;
+            segment.save();
+        },
+        onEditDescription: ({
+                                description = ''
+                            }) => {
+            segment.description = description;
             segment.save();
         }
     })

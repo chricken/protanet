@@ -33,6 +33,7 @@ content {
 
         workbench {
             padding-top: var(--paddingBasic);
+            overflow-y:scroll;
         }
     }
 

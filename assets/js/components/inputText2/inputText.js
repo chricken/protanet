@@ -6,15 +6,20 @@ import helpers from '../../helpers.js';
 import infoBox from '../infoBox/infoBox.js';
 
 const inputText2 = ({
-    text,
-    legend,
-    description,
-    parent,
-    callback,
-    multiline = false,
-    minHeight = null,
-    maxHeight = Infinity,
-}) => {
+                        text,
+                        legend,
+                        description,
+                        parent,
+                        onEditText = () => {
+                        },
+                        onEditLegend = () => {
+                        },
+                        onEditDescription = () => {
+                        },
+                        multiline = false,
+                        minHeight = null,
+                        maxHeight = Infinity,
+                    }) => {
     const elContainer = dom.create({
         parent,
         cssClassName: 'input-text2-container'
@@ -26,13 +31,25 @@ const inputText2 = ({
         content: legend,
         attr: {
             contentEditable: true
+        },
+        listeners: {
+            input(evt) {
+                legend = evt.target.innerText;
+                onEditLegend({
+                    legend: evt.target.innerText
+                })
+            }
         }
     });
 
     infoBox({
         parent: elContainer,
         description,
-        cssClassName: 'input-text2-info'
+        cssClassName: 'input-text2-info',
+        onEdit(content){
+            description = content;
+            onEditDescription({description});
+        }
     });
 
     const elInput = dom.create({
@@ -50,9 +67,11 @@ const inputText2 = ({
             input: helpers.debounce((evt) => {
                 const newText = evt.target.innerText;
                 if (!multiline) {
-                    evt.target.innerText = newText.replace(/\n/g, '');
+                    evt.target.innerText = newText.replaceAll(/\n/g, '');
+                    evt.target.innerText = newText.replaceAll(/<br>/g, '');
+                    evt.target.innerText = newText.replaceAll(/<br\/>/g, '');
                 }
-                callback(newText);
+                onEditText({text: newText});
             }, settings.delayOfDebouncers)
         }
     });

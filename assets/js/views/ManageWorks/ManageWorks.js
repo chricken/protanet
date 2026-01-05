@@ -85,6 +85,7 @@ const ManageWorks = () => {
                         legend: 'Volumes',
                         text: selectedWork.volumes.length.toString()
                     })
+
                     // Zusammenfassung
                     if (selectedWork.summary) {
                         CompInfoBox({

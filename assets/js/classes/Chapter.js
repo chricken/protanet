@@ -39,7 +39,9 @@ class Chapter {
                     id: segmentID,
                 }).then(segment => {
                     data.segments.push(new Segment(segment));
-                }).catch(
+                }).then(
+                    // () => console.log(data)
+                ).catch(
                     console.warn
                 )
             })
