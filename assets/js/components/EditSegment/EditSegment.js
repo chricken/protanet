@@ -20,7 +20,7 @@ const editSegment = ({
 
     dom.create({
         parent: elContainer,
-        content: `Segment ${segment.id}`,
+        content: `Segment ID: ${segment.id}<br>`,
     })
 
     CompInputText({
