@@ -16,6 +16,8 @@ const inputText2 = ({
                         },
                         onEditDescription = () => {
                         },
+                        onNewSegment = () => {
+                        },
                         multiline = false,
                         minHeight = null,
                         maxHeight = Infinity,
@@ -25,8 +27,13 @@ const inputText2 = ({
         cssClassName: 'input-text2-container'
     });
 
-    const elLegend = dom.create({
+    const elLegendContainer = dom.create({
         parent: elContainer,
+        cssClassName: 'input-text2-legend-container',
+    })
+
+    const elLegend = dom.create({
+        parent: elLegendContainer,
         cssClassName: 'input-text2-legend',
         content: legend,
         attr: {
@@ -43,14 +50,19 @@ const inputText2 = ({
     });
 
     infoBox({
-        parent: elContainer,
+        parent: elLegendContainer,
         description,
         cssClassName: 'input-text2-info',
-        onEdit(content){
+        onEdit(content) {
             description = content;
             onEditDescription({description});
         }
     });
+
+    dom.create({
+        parent: elLegendContainer,
+        content: `Created: ${segment.crDate}`
+    })
 
     const elInput = dom.create({
         parent: elContainer,
@@ -64,6 +76,16 @@ const inputText2 = ({
             maxHeight: multiline ? `${maxHeight}px` : null
         },
         listeners: {
+            keydown(evt) {
+                evt.stopPropagation();
+                if (evt.ctrlKey && evt.key === 'Enter') {
+                    console.log('New Segmnent');
+                    onNewSegment();
+                }
+            },
+            keyup(evt) {
+                evt.stopPropagation();
+            },
             input: helpers.debounce((evt) => {
                 const newText = evt.target.innerText;
                 if (!multiline) {

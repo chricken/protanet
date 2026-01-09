@@ -10,18 +10,21 @@ import CompInputText from '../inputText2/inputText.js';
 const editSegment = ({
                          segment,
                          parent = elements.workbench,
+                         onNewSegment = () => {
+                         }
                      }) => {
 
     const elContainer = dom.create({
         parent,
         cssClassName: 'editSegment transit',
     })
-    console.log('segment', segment);
 
+    /*
     dom.create({
         parent: elContainer,
         content: `Segment ID: ${segment.id}<br>`,
     })
+    */
 
     CompInputText({
         text: segment.paragraphs.join('\n'),
@@ -35,6 +38,8 @@ const editSegment = ({
                      }) => {
             segment.paragraphs = text.split('\n');
             segment.save();
+            console.log('save', Date.now());
+
         },
         onEditLegend: ({
                            legend = '',
@@ -47,6 +52,10 @@ const editSegment = ({
                             }) => {
             segment.description = description;
             segment.save();
+        },
+        onNewSegment: () => {
+            // Signal weiterleiten nach oben
+            onNewSegment();
         }
     })
     /*
