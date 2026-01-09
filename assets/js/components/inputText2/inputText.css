@@ -1,0 +1,39 @@
+.input-text2-container {
+    display: flex;
+    align-items: flex-start; /* Richtet die Kinder oben aus */
+    gap: var(--paddingNarrow);
+    margin-bottom: var(--paddingBasic);
+}
+
+.input-text2-legend-container {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    width: 150px;
+}
+
+.input-text2-legend {
+    position: relative;
+    color: var(--shadedTextColor);
+}
+
+.input-text2-input {
+    position: relative;
+    display: inline;
+    flex: 1;
+    padding: var(--paddingNarrow);
+    border: 1px solid var(--drawColor);
+    border-radius: var(--radiusBasic);
+    outline: none;
+    white-space: pre-wrap;
+    overflow-y: auto;
+    max-width: 800px;
+}
+
+.input-text2-input:focus {
+    border-color: var(--drawColor);
+}
+
+.input-text2-info {
+    margin-left: var(--paddingNarrow);
+}

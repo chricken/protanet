@@ -22,50 +22,10 @@ const inputText2 = ({
                         minHeight = null,
                         maxHeight = Infinity,
                     }) => {
-    const elContainer = dom.create({
-        parent,
-        cssClassName: 'input-text2-container'
-    });
 
-    const elLegendContainer = dom.create({
-        parent: elContainer,
-        cssClassName: 'input-text2-legend-container',
-    })
-
-    const elLegend = dom.create({
-        parent: elLegendContainer,
-        cssClassName: 'input-text2-legend',
-        content: legend,
-        attr: {
-            contentEditable: true
-        },
-        listeners: {
-            input(evt) {
-                legend = evt.target.innerText;
-                onEditLegend({
-                    legend: evt.target.innerText
-                })
-            }
-        }
-    });
-
-    infoBox({
-        parent: elLegendContainer,
-        description,
-        cssClassName: 'input-text2-info',
-        onEdit(content) {
-            description = content;
-            onEditDescription({description});
-        }
-    });
-
-    dom.create({
-        parent: elLegendContainer,
-        content: `Created: ${segment.crDate}`
-    })
 
     const elInput = dom.create({
-        parent: elContainer,
+        parent,
         cssClassName: 'input-text2-input',
         content: text,
         attr: {
@@ -100,13 +60,13 @@ const inputText2 = ({
 
     dom.create({
         tagName: 'link',
-        parent: elContainer,
+        parent,
         attr: {
             rel: 'stylesheet',
             href: 'assets/js/components/inputText2/inputText.css'
         }
     })
 
-    return elContainer;
+    return elInput;
 };
 export default inputText2;

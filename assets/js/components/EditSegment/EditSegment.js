@@ -4,6 +4,7 @@ import dom from '../../dom.js';
 import elements from '../../elements.js';
 import helpers from '../../helpers.js';
 import settings from "../../settings.js";
+import infoBox from '../infoBox/infoBox.js';
 
 import CompInputText from '../inputText2/inputText.js';
 
@@ -16,7 +17,7 @@ const editSegment = ({
 
     const elContainer = dom.create({
         parent,
-        cssClassName: 'editSegment transit',
+        cssClassName: 'editSegment transit input-text2-container',
     })
 
     /*
@@ -26,6 +27,40 @@ const editSegment = ({
     })
     */
 
+    const elLegendContainer = dom.create({
+        parent: elContainer,
+        cssClassName: 'input-text2-legend-container',
+    })
+
+     dom.create({
+        parent: elLegendContainer,
+        cssClassName: 'input-text2-legend',
+        content: segment.title,
+        attr: {
+            contentEditable: true
+        },
+        listeners: {
+            input(evt) {
+                segment.title = evt.target.innerText;
+                segment.save();
+            }
+        }
+    });
+
+    infoBox({
+        parent: elLegendContainer,
+        description: segment.description || 'No Description',
+        cssClassName: 'input-text2-info',
+        onEdit(content) {
+            segment.description = content;
+            segment.save();
+        }
+    });
+
+    dom.create({
+        parent: elLegendContainer,
+        content: `Created: ${segment.crDate}`
+    })
     CompInputText({
         text: segment.paragraphs.join('\n'),
         legend: segment.title || 'No Title',
@@ -41,67 +76,12 @@ const editSegment = ({
             console.log('save', Date.now());
 
         },
-        onEditLegend: ({
-                           legend = '',
-                       }) => {
-            segment.title = legend;
-            segment.save();
-        },
-        onEditDescription: ({
-                                description = ''
-                            }) => {
-            segment.description = description;
-            segment.save();
-        },
         onNewSegment: () => {
             // Signal weiterleiten nach oben
             onNewSegment();
         }
     })
-    /*
 
-dom.create({
-    parent: elContainer,
-    content: segment.title,
-    args: {
-        contentEditable: true
-    },
-    listeners: {
-        input(evt) {
-            segment.title = evt.target.innerText;
-            segment.save();
-        }
-    }
-})
-
-let content = segment.paragraphs.map(p => p.text).join('<br>')
-
-const elInput = dom.create({
-    parent: elContainer,
-    cssClassName: 'segmentText editable transit',
-    attr: {
-        contentEditable: true,
-    },
-    content,
-    listeners: {
-        input(evt) {
-            segment.paragraphs = evt.target.innerText.split('<br>').map(
-                p => ({text: p})
-            );
-
-        }
-    }
-})
-
-elInput.addEventListener(
-    'input',
-    helpers.debounce(() => {
-        console.log('save', Date.now());
-        segment.save();
-    }, settings.delayOfDebouncers)
-)
-
-     */
 
     dom.create({
         tagName: 'link',
