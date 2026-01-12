@@ -5,13 +5,14 @@ import dom from '../../dom.js';
 const infoBox = ({
                      parent,
                      description,
+                     legend = 'Details',
                      onEdit = () => {
                      }
                  }) => {
     const elInfoIcon = dom.create({
         parent,
         cssClassName: `info-icon transit`,
-        content: '?',
+        content: legend,
         listeners: {
             click: (evt) => {
                 evt.stopPropagation();

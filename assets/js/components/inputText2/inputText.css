@@ -17,6 +17,12 @@
     color: var(--shadedTextColor);
 }
 
+.input-text2-info {
+    position: relative;
+    color: var(--shadedTextColor);
+    font-size: var(--fontSizeSmall);
+}
+
 .input-text2-input {
     position: relative;
     display: inline;

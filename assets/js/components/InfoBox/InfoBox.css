@@ -1,12 +1,12 @@
 .info-icon {
     cursor: pointer;
-    color: var(--drawColor);
-    font-weight: bold;
-    width: var(--distanceBasic);
-    height: var(--distanceBasic);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    color: var(--shadedTextColor);
+    /*font-weight: bold;*/
+    /*width: var(--distanceBasic);*/
+    /*height: var(--distanceBasic);*/
+    /*display: flex;*/
+    /*align-items: center;*/
+    /*justify-content: center;*/
     border-radius: var(--radiusBasic);
     background-color: var(--backgroundColor);
 }

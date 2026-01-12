@@ -5,13 +5,19 @@ import elements from '../../elements.js';
 import helpers from '../../helpers.js';
 import settings from "../../settings.js";
 import infoBox from '../infoBox/infoBox.js';
+import compButton from '../button/button.js';
 
 import CompInputText from '../inputText2/inputText.js';
 
 const editSegment = ({
                          segment,
+                         index,
                          parent = elements.workbench,
                          onNewSegment = () => {
+                         },
+                         onRemoveSegment = () => {
+                         },
+                         onSelectSegment = () => {
                          }
                      }) => {
 
@@ -20,19 +26,12 @@ const editSegment = ({
         cssClassName: 'editSegment transit input-text2-container',
     })
 
-    /*
-    dom.create({
-        parent: elContainer,
-        content: `Segment ID: ${segment.id}<br>`,
-    })
-    */
-
     const elLegendContainer = dom.create({
         parent: elContainer,
         cssClassName: 'input-text2-legend-container',
     })
 
-     dom.create({
+    dom.create({
         parent: elLegendContainer,
         cssClassName: 'input-text2-legend',
         content: segment.title,
@@ -43,6 +42,9 @@ const editSegment = ({
             input(evt) {
                 segment.title = evt.target.innerText;
                 segment.save();
+            },
+            focus() {
+                onSelectSegment();
             }
         }
     });
@@ -51,6 +53,7 @@ const editSegment = ({
         parent: elLegendContainer,
         description: segment.description || 'No Description',
         cssClassName: 'input-text2-info',
+        legend: "Show Summary",
         onEdit(content) {
             segment.description = content;
             segment.save();
@@ -59,8 +62,31 @@ const editSegment = ({
 
     dom.create({
         parent: elLegendContainer,
-        content: `Created: ${segment.crDate}`
+        cssClassName: 'input-text2-info',
+        content: `Created:<br>${new Date(segment.crDate).toLocaleString()}`
     })
+
+    dom.create({
+        parent: elLegendContainer,
+        cssClassName: 'input-text2-info',
+        content: `Changed:<br>${new Date(segment.chDate).toLocaleString()}`
+    })
+
+    compButton({
+        legend: 'Add Segment',
+        parent: elLegendContainer,
+        callback: onNewSegment
+    })
+
+    compButton({
+        legend: 'Remove Segment',
+        parent: elLegendContainer,
+        callback() {
+            onRemoveSegment();
+
+        }
+    })
+
     CompInputText({
         text: segment.paragraphs.join('\n'),
         legend: segment.title || 'No Title',
@@ -73,13 +99,17 @@ const editSegment = ({
                      }) => {
             segment.paragraphs = text.split('\n');
             segment.save();
-            console.log('save', Date.now());
 
         },
         onNewSegment: () => {
             // Signal weiterleiten nach oben
             onNewSegment();
+
+        },
+        onFocus: () => {
+            onSelectSegment();
         }
+
     })
 
 
@@ -91,6 +121,7 @@ const editSegment = ({
             href: 'assets/js/components/EditSegment/EditSegment.css'
         }
     })
+    return elContainer;
 }
 
 export default editSegment

@@ -4,13 +4,16 @@
     padding-bottom: var(--paddingBasic);
     color: var(--textColor);
 
-.segmentText {
-    position: relative;
-    padding:var(--paddingBasic);
-    min-height: 150px;
-    max-height: 400px;
-    overflow: scroll;
-}
+    .segmentText {
+        position: relative;
+        padding: var(--paddingBasic);
+        min-height: 150px;
+        max-height: 400px;
+        overflow: scroll;
+    }
 
 }
 
+.input-text2-legend:empty {
+    border-bottom: 1px dotted var(--textColor);
+}

@@ -7,16 +7,12 @@ import infoBox from '../infoBox/infoBox.js';
 
 const inputText2 = ({
                         text,
-                        legend,
-                        description,
                         parent,
                         onEditText = () => {
                         },
-                        onEditLegend = () => {
-                        },
-                        onEditDescription = () => {
-                        },
                         onNewSegment = () => {
+                        },
+                        onFocus = () => {
                         },
                         multiline = false,
                         minHeight = null,
@@ -36,10 +32,13 @@ const inputText2 = ({
             maxHeight: multiline ? `${maxHeight}px` : null
         },
         listeners: {
+            focus() {
+                onFocus()
+            },
             keydown(evt) {
                 evt.stopPropagation();
                 if (evt.ctrlKey && evt.key === 'Enter') {
-                    console.log('New Segmnent');
+                    console.log('New Segment');
                     onNewSegment();
                 }
             },

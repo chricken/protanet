@@ -19,12 +19,6 @@ const tab = ({
     const elContainer = dom.create({
         parent,
         cssClassName: `tab transit ${active ? 'active' : ''}`,
-    })
-
-    const elLegend = dom.create({
-        parent: elContainer,
-        cssClassName: 'legend transit',
-        content: `${legend}: `,
         listeners: {
             click() {
                 callback({
@@ -33,6 +27,12 @@ const tab = ({
                 })
             },
         },
+    })
+
+    const elLegend = dom.create({
+        parent: elContainer,
+        cssClassName: 'legend transit',
+        content: `${legend}: `
 
     })
 
