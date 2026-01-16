@@ -101,7 +101,7 @@ const selectList = ({
     options.forEach(option => {
         dom.create({
             parent: parentOptions,
-            cssClassName: 'option tramsit',
+            cssClassName: 'option transit',
             content: option.text,
             listeners: {
                 click() {

@@ -44,7 +44,7 @@ class Work {
                 Promise.all(this.volumes.map(volumeID => {
                     // Mehrere Promises parallel laufen lassen.
                     // Kein Promise.all(), weil unnötig
-                  return  db.loadData({
+                    return db.loadData({
                         dbName: 'volumes',
                         id: volumeID,
                     }).then(volume => {
@@ -86,10 +86,25 @@ class Work {
     }
 
     delete() {
-        return db.deleteData({
-            dbName: 'works',
-            id: this.id
-        })
+        console.log(this);
+
+        // Die Kinder werden zuerst gelöscht
+        // Denn sie ändern ihre Eltern und sichern diese
+        // Erst danach können die Eltern sicher gelöscht werden.
+        // Das sichern der Eltern ist wichtig, denn es kann ja sein,
+        // Dass das Kind auch allein gelöscht werden soll, ohne auch die Eltern zu löschen
+
+        Promise.all(
+            data.volumes.map(v => v.delete())
+        ).then(
+            () => db.deleteData({
+                dbName: 'works',
+                id: this.id
+            })
+        ).catch(
+            console.warn
+        )
+
     }
 
 }

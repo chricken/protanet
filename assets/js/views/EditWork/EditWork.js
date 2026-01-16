@@ -12,7 +12,6 @@ import CompInfoBox from '../../components/InfoBox_alt/InfoBox.js';
 import CompWorkTitle from '../../components/WorkTitle/WorkTitle.js';
 
 
-
 const EditWork = () => {
     elements.workspaceUI.innerHTML = '';
     elements.workbench.innerHTML = '';
@@ -52,6 +51,41 @@ const EditWork = () => {
         value: work.image,
         callback(value) {
             work.image = value;
+        }
+    })
+
+    let elInputImg= dom.create({
+        tagName: 'input',
+        attr: {
+            type: 'file',
+            accept: 'image/*',
+        },
+        parent: elements.workbench,
+        listeners: {
+            change(evt) {
+                const file = evt.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        work.image = e.target.result;
+                        const elImg = document.createElement('img');
+                        elImg.src = e.target.result;
+                        elImg.addEventListener('load', () => {
+                                const c = document.createElement('canvas');
+                                elInputImg.after(c)
+                                const ctx = c.getContext('2d');
+                                // Update the image preview or any other UI element if needed
+                                console.log('Image updated:', elImg.naturalWidth);
+                                c.width = elImg.naturalWidth;
+                                c.height = elImg.naturalHeight;
+                                ctx.drawImage(elImg, 0, 0);
+                            }
+                        )
+
+                    };
+                    reader.readAsDataURL(file);
+                }
+            }
         }
     })
 

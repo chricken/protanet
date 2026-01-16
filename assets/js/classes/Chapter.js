@@ -73,15 +73,34 @@ class Chapter {
     }
 
     delete() {
-        data.chapters = data.chapters.filter(c => c.id != this.id);
-        const v = data.volumes.find(v => v.id == this.volumeID)
-        v.chapters = v.chapters.filter(c => c != this.id);
-        return v.save().then(
-            db.deleteData({
-                dbName: 'chapters',
-                id: this.id
+
+        return Promise.all(
+            // Zuerst Segments löschen
+            this.segments.map(segment => {
+                segment = data.segments.find(s => s.id === segment);
+                segment.delete()
             })
-        );
+        ).then(
+            () => {
+
+                data.chapters = data.chapters.filter(c => c.id !== this.id);
+
+                const volume = data.volumes.find(v => v.id === this.volumeID);
+                volume.chapters = volume.chapters.filter(c => c !== this.id);
+
+                return (volume.save());
+
+            }
+        ).then(
+            () => {
+                return db.deleteData({
+                    dbName: 'chapters',
+                    id: this.id
+                })
+
+            }
+        )
+
     }
 
 

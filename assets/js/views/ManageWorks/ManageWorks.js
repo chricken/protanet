@@ -25,7 +25,7 @@ const loadWorks = () => {
 
 const ManageWorks = () => {
 
-   // elements.workspaceUI.innerHTML = '';
+    // elements.workspaceUI.innerHTML = '';
     elements.workbench.innerHTML = '';
 
     const work = {}
@@ -96,7 +96,7 @@ const ManageWorks = () => {
                     }
 
                     CompButton({
-                        legend: 'Load Work',
+                        legend: 'Load',
                         parent: parentInfoWork,
                         callback() {
                             // Werk mit der Klasse anlegen,
@@ -111,6 +111,27 @@ const ManageWorks = () => {
                             ).catch(
                                 console.warn
                             )
+
+                        }
+                    })
+
+                    CompButton({
+                        legend: 'Delete',
+                        parent: parentInfoWork,
+                        callback() {
+                            console.log(selectedWork);
+
+                            if (confirm(`Soll "${selectedWork.title}" wirklich gelöscht werden?`)) {
+                                let currentWorkID = data.work?.id || null;
+                                console.log(data);
+
+                                new Work(selected).then(
+                                    workToDelete => workToDelete.delete()
+                                ).catch(
+                                    console.warn
+                                )
+
+                            }
 
                         }
                     })

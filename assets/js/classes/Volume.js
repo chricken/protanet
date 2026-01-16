@@ -71,20 +71,31 @@ class Volume {
     }
 
     delete() {
+
         // Zuerst Chapters löschen, weil die Chapters auch auf das Volume zugreifen wollen
-        this.chapters.forEach(chapter => {
-            chapter = data.chapters.find(c => c.id == chapter);
-            chapter.delete()
-        });
+        return Promise.all(
+            this.chapters.map(chapter => {
+                data.chapters.find(c => c.id === chapter).delete();
+            })
+        ).then(
+            () => {
+                // Dieses Volume aus den Data entfernen
+                data.volumes = data.volumes.filter(v => v.id !== this.id);
 
-        data.volumes = data.volumes.filter(v => v.id != this.id);
-        data.work.volumes = data.work.volumes.filter(v => v != this.id);
-        data.work.save();
+                // Aus dem Eltern-Work diesen Volume entfernen
+                // Es gibt nur einen Work in Data, deswegen kann darauf direkt zugegriffen werden
+                data.work.volumes = data.work.volumes.filter(v => v !== this.id);
 
-        return db.deleteData({
-            dbName: 'volumes',
-            id: this.id
-        })
+                // Erst wenn das Eltern-Element gesichert ist, weitermachen
+                return (data.work.save());
+
+            }
+        ).then(
+            () => db.deleteData({
+                dbName: 'volumes',
+                id: this.id
+            })
+        )
     }
 
 

@@ -8,12 +8,11 @@
         display: block;
         border: 1px solid var(--drawColor);
         padding: var(--paddingBasic);
-
-
     }
-    .parentInfoWork{
+
+    .parentInfoWork {
         position: relative;
-        min-height:100px;
+        min-height: 100px;
         /*border: 1px solid var(--drawColor);*/
         padding: var(--paddingBasic);
     }

@@ -61,10 +61,27 @@ class Segment {
     }
 
     delete() {
-        return db.deleteData({
-            dbName: 'segments',
-            id: this.id
-        })
+        return new Promise(
+            (resolve, reject) => {
+
+                data.segments = data.segments.filter(s => s.id !== this.id);
+
+                const chapter = data.chapters.find(c => c.id === this.chapterID);
+                chapter.segments = chapter.segments.filter(s => s !== this.id);
+
+                return (chapter.save());
+
+            }
+        ).then(
+            () => {
+                return db.deleteData({
+                    dbName: 'segments',
+                    id: this.id
+                })
+
+            }
+        )
+
     }
 
 }

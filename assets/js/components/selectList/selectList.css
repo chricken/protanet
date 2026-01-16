@@ -1,6 +1,7 @@
 .selectList {
     position: relative;
     display: inline-block;
+    width:300px;
 
     .list {
         position: relative;
