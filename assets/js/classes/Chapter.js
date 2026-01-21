@@ -40,7 +40,7 @@ class Chapter {
                 }).then(segment => {
                     data.segments.push(new Segment(segment));
                 }).then(
-                    // () => console.log(data)
+                    () => console.log(data)
                 ).catch(
                     console.warn
                 )
@@ -74,22 +74,28 @@ class Chapter {
 
     delete() {
 
+        console.log('Delete chapter', this.id, this.title);
+
+        console.log(this.segments);
         return Promise.all(
             // Zuerst Segments löschen
+
             this.segments.map(segment => {
                 segment = data.segments.find(s => s.id === segment);
-                segment.delete()
+                console.log('segment', segment);
+
+                return segment.delete()
             })
         ).then(
             () => {
-
+                console.log(data.chapters);
                 data.chapters = data.chapters.filter(c => c.id !== this.id);
+                console.log(data.chapters);
 
                 const volume = data.volumes.find(v => v.id === this.volumeID);
                 volume.chapters = volume.chapters.filter(c => c !== this.id);
 
-                return (volume.save());
-
+                return volume.save();
             }
         ).then(
             () => {

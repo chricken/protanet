@@ -140,7 +140,7 @@ const db = {
         if (id === null || id === undefined) {
             return Promise.reject(new Error('id is required'));
         }
-        if ( typeof id === 'object') {
+        if (typeof id === 'object') {
             return Promise.reject(new Error('id must be a string'));
         }
 
@@ -173,6 +173,8 @@ const db = {
                    dbName = null,
                    id = null
                }) {
+        console.log('delete from DB', dbName, id);
+
         if (!dbName) {
             return Promise.reject(new Error('dbName is required'));
         }
@@ -181,13 +183,17 @@ const db = {
         }
 
         dbName = dbNames[dbName].name;
+        console.log('dbName', dbName);
 
         return this.init().then((database) => {
+            console.log('db connection established');
+
             return new Promise((resolve, reject) => {
                 if (!database.objectStoreNames.contains(dbName)) {
                     reject(new Error(`ObjectStore '${dbName}' does not exist`));
                     return;
                 }
+                console.log('db contains ObjectStore - Success');
 
                 const tx = database.transaction(dbName, 'readwrite');
                 const store = tx.objectStore(dbName);
@@ -195,9 +201,13 @@ const db = {
                 const request = store.delete(id);
 
                 request.onsuccess = () => {
+                    console.log('Success removing ', id);
+
                     resolve(true);
                 };
                 request.onerror = (event) => {
+                    console.log('error removing ', id, event.target.error);
+
                     reject(event.target.error || new Error('Failed to delete data'));
                 };
             });

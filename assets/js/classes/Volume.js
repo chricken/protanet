@@ -72,11 +72,12 @@ class Volume {
 
     delete() {
 
+        console.log('Delete Volume', this.id, this.title);
         // Zuerst Chapters löschen, weil die Chapters auch auf das Volume zugreifen wollen
         return Promise.all(
-            this.chapters.map(chapter => {
-                data.chapters.find(c => c.id === chapter).delete();
-            })
+            this.chapters.map(
+                chapter => data.chapters.find(c => c.id === chapter).delete()
+            )
         ).then(
             () => {
                 // Dieses Volume aus den Data entfernen

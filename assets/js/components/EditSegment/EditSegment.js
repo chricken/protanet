@@ -11,6 +11,7 @@ import CompInputText from '../inputText2/inputText.js';
 
 const editSegment = ({
                          segment,
+                         chapter,
                          index,
                          parent = elements.workbench,
                          onNewSegment = () => {
@@ -78,14 +79,22 @@ const editSegment = ({
         callback: onNewSegment
     })
 
-    compButton({
-        legend: 'Remove Segment',
-        parent: elLegendContainer,
-        callback() {
-            onRemoveSegment();
+    if (chapter.segments.length > 1) {
+        compButton({
+            legend: 'Remove Segment',
+            parent: elLegendContainer,
+            callback() {
+                onRemoveSegment().then(
+                    () => {
+                        console.log(`segment ${this.id} (${this.legend}) removed successfully`);
+                    }
+                ).catch(
+                    console.warn
+                )
 
-        }
-    })
+            }
+        })
+    }
 
     CompInputText({
         text: segment.paragraphs.join('\n'),

@@ -86,7 +86,7 @@ class Work {
     }
 
     delete() {
-        console.log(this);
+        console.log('delete work', this.id, this.title);
 
         // Die Kinder werden zuerst gelöscht
         // Denn sie ändern ihre Eltern und sichern diese

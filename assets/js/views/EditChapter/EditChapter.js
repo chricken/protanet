@@ -37,11 +37,12 @@ const EditChapter = ({
     })
 
     // Chapter als eigene Funktion zeichnen, damit sie rekursiv aufgerufen werden können
-    const drawChapters = (segmentID, index) => {
+    const drawSegments = (segmentID, index) => {
         const segment = data.segments.find(segment => segment.id === segmentID);
         if (segment) {
             CompEditSegment({
                 segment,
+                chapter,
                 index,
                 onNewSegment() {
                     const segment = new Segment({
@@ -52,14 +53,24 @@ const EditChapter = ({
                     chapter.segments.splice(index + 1, 0, segment.id);
                     chapter.save();
                     segment.save();
+                    /*
                     elements.workbench.innerHTML = '';
-                    chapter.segments.forEach(drawChapters)
+                    chapter.segments.forEach(drawSegments)
+                     */
+                    EditChapter({
+                        chapter,
+                        onChangeTitle
+                    })
                 },
                 onRemoveSegment() {
-                    chapter.segments.splice(index, 1);
-                    chapter.save();
-                    elements.workbench.innerHTML = '';
-                    chapter.segments.forEach(drawChapters)
+                    return segment.delete().then(
+                        () => {
+                            chapter.segments.splice(index, 1);
+                            chapter.save();
+                            elements.workbench.innerHTML = '';
+                            chapter.segments.forEach(drawSegments)
+                        }
+                    );
                 },
                 onSelectSegment() {
                     chapter.activeSegment = segmentID;
@@ -69,7 +80,7 @@ const EditChapter = ({
         }
     }
 
-    chapter.segments.forEach(drawChapters)
+    chapter.segments.forEach(drawSegments)
 
     dom.create({
         tagName: 'link',

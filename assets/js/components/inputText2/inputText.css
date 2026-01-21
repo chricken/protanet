@@ -37,8 +37,9 @@
 }
 
 .input-text2-input:focus {
-    border-color: var(--drawColor);
+    border: 2px solid var(--contrastColor2);
 }
+
 
 .input-text2-info {
     margin-left: var(--paddingNarrow);

@@ -3,6 +3,7 @@
     padding-top: var(--paddingBasic);
     padding-bottom: var(--paddingBasic);
     color: var(--textColor);
+    border-bottom: 2px solid var(--contrastColor2);
 
     .segmentText {
         position: relative;

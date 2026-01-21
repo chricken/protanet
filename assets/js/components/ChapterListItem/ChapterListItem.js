@@ -12,6 +12,8 @@ const chapterListItem = ({
                              index,
                              volume,
                              onAddChapter = () => {
+                             },
+                             onDeleteChapter = () => {
                              }
                          }) => {
 
@@ -140,19 +142,29 @@ const chapterListItem = ({
             }
         })
     }
+    console.log(volume.chapters);
 
-    dom.create({
-        parent: containersButtons,
-        cssClassName: 'button removeChapterButton',
-        content: '✖',
-        listeners: {
-            click() {
-                volume.chapters.splice(index, 1);
-                volume.save();
-                ViewVolume({volume, index, elLegend});
+    if (volume.chapters.length > 1) {
+        dom.create({
+            parent: containersButtons,
+            cssClassName: 'button removeChapterButton',
+            content: '✖',
+            listeners: {
+                click() {
+                    /*
+                    volume.chapters.splice(index, 1);
+                    volume.save();
+                    ViewVolume({volume, index, elLegend});
+                     */
+                    if (confirm(`Are you sure you want to delete chapter "${chapter.title}"?`)) {
+                        chapter.delete().then(
+                            onDeleteChapter
+                        )
+                    }
+                }
             }
-        }
-    })
+        })
+    }
 
     dom.create({
         tagName: 'link',

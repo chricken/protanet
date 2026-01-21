@@ -47,6 +47,13 @@ const ViewVolume = ({
                 volume.chapters.splice(index, 0, chapter.id);
                 volume.save();
                 ViewVolume({volume, index, elLegend});
+            },
+            onDeleteChapter() {
+                ViewVolume({
+                    volume,
+                    elLegend,
+                    index
+                })
             }
         })
 
