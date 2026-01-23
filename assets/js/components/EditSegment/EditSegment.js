@@ -19,9 +19,12 @@ const editSegment = ({
                          onRemoveSegment = () => {
                          },
                          onSelectSegment = () => {
+                         },
+                         onMoveSegmentUp = () => {
+                         },
+                         onMoveSegmentDown = () => {
                          }
                      }) => {
-
     const elContainer = dom.create({
         parent,
         cssClassName: 'editSegment transit input-text2-container',
@@ -74,24 +77,39 @@ const editSegment = ({
     })
 
     compButton({
-        legend: 'Add Segment',
+        legend: '+',
         parent: elLegendContainer,
         callback: onNewSegment
     })
+    if (index > 1) {
+        compButton({
+            legend: '⇑',
+            parent: elLegendContainer,
+            callback: onMoveSegmentUp
+        })
+    }
+    if (index < chapter.segments.length - 1) {
+        compButton({
+            legend: '⇓',
+            parent: elLegendContainer,
+            callback: onMoveSegmentDown
+        })
+    }
 
     if (chapter.segments.length > 1) {
         compButton({
-            legend: 'Remove Segment',
+            legend: '✖',
             parent: elLegendContainer,
             callback() {
-                onRemoveSegment().then(
-                    () => {
-                        console.log(`segment ${this.id} (${this.legend}) removed successfully`);
-                    }
-                ).catch(
-                    console.warn
-                )
-
+                if (confirm(`Soll das Segment "${segment.legend || segment.paragraphs[0]?.substring(0, 10) || segment.id}" wirklich gelöscht werden?`)) {
+                    onRemoveSegment().then(
+                        () => {
+                            console.log(`segment "${segment.id} (${segment.legend}" removed successfully`);
+                        }
+                    ).catch(
+                        console.warn
+                    )
+                }
             }
         })
     }

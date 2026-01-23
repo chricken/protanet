@@ -67,6 +67,12 @@ const ViewVolume = ({
             href: 'assets/js/views/Tabs/Tabs.css'
         }
     })
+
+    dom.create({
+        tagName: 'h2',
+        content: "Select a Chapter in the sidebar -->",
+        parent: elements.workbench
+    })
 }
 
 export default ViewVolume

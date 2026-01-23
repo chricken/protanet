@@ -61,19 +61,41 @@ const EditChapter = ({
                         chapter,
                         onChangeTitle
                     })
+                    console.log('segments', chapter.segments);
                 },
                 onRemoveSegment() {
                     return segment.delete().then(
                         () => {
-                            chapter.segments.splice(index, 1);
-                            chapter.save();
                             elements.workbench.innerHTML = '';
-                            chapter.segments.forEach(drawSegments)
+                            chapter.segments.forEach(drawSegments);
                         }
                     );
                 },
                 onSelectSegment() {
                     chapter.activeSegment = segmentID;
+                },
+                onMoveSegmentUp() {
+                    // Segment asusschneiden und einen Index davor wieder einfügen
+                    chapter.segments.splice(
+                        index - 1, 0,
+                        chapter.segments.splice(
+                            index, 1
+                        )[0]
+                    )
+                    chapter.save();
+                    elements.workbench.innerHTML = '';
+                    chapter.segments.forEach(drawSegments);
+                },
+                onMoveSegmentDown() {
+                    chapter.segments.splice(
+                        index + 1, 0,
+                        chapter.segments.splice(
+                            index, 1
+                        )[0]
+                    )
+                    chapter.save();
+                    elements.workbench.innerHTML = '';
+                    chapter.segments.forEach(drawSegments);
                 }
             });
             segment.save();

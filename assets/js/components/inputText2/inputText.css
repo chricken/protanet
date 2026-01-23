@@ -14,7 +14,13 @@
 
 .input-text2-legend {
     position: relative;
-    color: var(--shadedTextColor);
+    color: var(--textColor);
+    margin-bottom:var(--distanceNear);
+    font-size: 1.1em;
+    font-family: Museo700;
+}
+.input-text2-legend:focus {
+    /*color:var(--contrastColor2)*/
 }
 
 .input-text2-info {
@@ -43,4 +49,5 @@
 
 .input-text2-info {
     margin-left: var(--paddingNarrow);
+    margin-bottom:var(--distanceNear);
 }

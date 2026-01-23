@@ -1,17 +1,13 @@
 .info-icon {
     cursor: pointer;
-    color: var(--shadedTextColor);
-    /*font-weight: bold;*/
-    /*width: var(--distanceBasic);*/
-    /*height: var(--distanceBasic);*/
-    /*display: flex;*/
-    /*align-items: center;*/
-    /*justify-content: center;*/
+    color: var(--textColor);
+    margin-bottom: var(--distanceNear);
     border-radius: var(--radiusBasic);
     background-color: var(--backgroundColor);
 }
+
 .info-icon:hover {
-    color:var(--contrastColor1);
+    color: var(--contrastColor1);
 }
 
 .info-box {

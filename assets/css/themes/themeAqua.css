@@ -1,0 +1,21 @@
+:root {
+    /* Grundfarben */
+    --backgroundColor: #e6f7ff; /* Haupt-Hintergrund (helles Aqua-Blau) */
+    --backgroundColorHighlighted: #b3e0ff; /* Haupt-Hintergrund (dunkel) */
+    --backgroundColorShaded: #ccf2ff; /* Abgedunkelter-Hintergrund (warmes Aqua-Blau) */
+    --backgroundColorBG: #006699; /* Hintergrund ganz hinten (kräftiges Aqua-Blau) */
+    --backgroundColorInputs: #f0faff; /* Hintergrund für Inputfelder (cremiges Aqua-Blau) */
+    --textColor: #003366; /* Primäre Textfarbe (dunkles Aqua-Blau) */
+    --textColorHighlighted: #004d99; /* Primäre Textfarbe (hell) */
+    --shadedTextColor: #005580; /* Abgeschwächte/sekundäre Textfarbe (mittleres Aqua-Blau) */
+    --drawColor: #0099cc; /* Akzentfarbe für Linien/Highlights (warmer Aqua-Goldton) */
+
+    /* Akzent- und Kontrastfarben */
+    --contrastColor1: #99d6ff; /* Kontrast 1 (heller Aqua-Goldton für Betonung) */
+    --contrastColor2: #003366; /* Kontrast 2 (dunkler Aqua-Rotbraun als Komplementärfarbe) */
+    --scrollbarThumbColor: #66b3ff;
+
+    /* Radii */
+    --radiusBasic: 12px;
+    --radiusNarrow: 8px;
+}

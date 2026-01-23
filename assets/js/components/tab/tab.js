@@ -21,6 +21,8 @@ const tab = ({
         cssClassName: `tab transit ${active ? 'active' : ''}`,
         listeners: {
             click() {
+                // Hier nur der Aufruf des Callback, weil nur
+                // im Callback auf alle Daten zugegriffen werden kann
                 callback({
                     elLegend,
                     index

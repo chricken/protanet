@@ -61,12 +61,11 @@ class Segment {
     }
 
     delete() {
-        console.log('Delete Segment', this.id, this.title);
+        // console.log('Delete Segment', this.id, this.title);
 
         return new Promise(
             (resolve, reject) => {
                 data.segments = data.segments.filter(s => s.id !== this.id);
-
 
                 const chapter = data.chapters.find(c => c.id === this.chapterID);
                 chapter.segments = chapter.segments.filter(s => s !== this.id);

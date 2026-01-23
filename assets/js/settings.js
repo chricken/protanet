@@ -18,6 +18,10 @@ const settings = {
             name: 'Sepia',
             filename:'themeSepia.css'
         },
+aqua:{
+            name: 'Aqua',
+            filename:'themeAqua.css'
+        },
         dark:{
             name: 'Dark',
             filename:'themeDark.css'
