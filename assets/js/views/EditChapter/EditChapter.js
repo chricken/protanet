@@ -48,6 +48,8 @@ const EditChapter = ({
                     const segment = new Segment({
                         chapterID: chapter.id,
                     })
+                    data.segments.forEach(s => s.isActive = false);
+                    segment.isActive = true;
                     data.segments.push(segment);
                     // console.log(segment);
                     chapter.segments.splice(index + 1, 0, segment.id);
@@ -61,6 +63,7 @@ const EditChapter = ({
                         chapter,
                         onChangeTitle
                     })
+
                     console.log('segments', chapter.segments);
                 },
                 onRemoveSegment() {

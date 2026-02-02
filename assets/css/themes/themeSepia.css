@@ -4,6 +4,7 @@
     --backgroundColor: #f4f1e8; /* Haupt-Hintergrund (helles Sepia-Beige) */
     --backgroundColorHighlighted: #e3d7ba; /* Haupt-Hintergrund (dunkel) */
     --backgroundColorShaded: #e6d7c3; /* Abgedunkelter-Hintergrund (warmes Sepia-Beige) */
+    --backgroundColorCanvas: #b3a993;
     --backgroundColorBG: #8b4513; /* Hintergrund ganz hinten (kräftiges Sepia-Braun) */
     --backgroundColorInputs: #faf7f0;   /* Hintergrund für Inputfelder (cremiges Beige) */
     --textColor: #4a3728; /* Primäre Textfarbe (dunkles Sepia-Braun) */

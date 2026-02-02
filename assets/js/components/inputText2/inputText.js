@@ -8,6 +8,7 @@ import infoBox from '../infoBox/infoBox.js';
 const inputText2 = ({
                         text,
                         parent,
+                        isActive = false,
                         onEditText = () => {
                         },
                         onNewSegment = () => {
@@ -19,6 +20,15 @@ const inputText2 = ({
                         maxHeight = Infinity,
                     }) => {
 
+const callbackInput = (evt) => {
+    const newText = evt.target.innerText;
+    if (!multiline) {
+        evt.target.innerText = newText.replaceAll(/\n/g, '');
+        evt.target.innerText = newText.replaceAll(/<br>/g, '');
+        evt.target.innerText = newText.replaceAll(/<br\/>/g, '');
+    }
+    onEditText({text: newText});
+}
 
     const elInput = dom.create({
         parent,
@@ -39,23 +49,22 @@ const inputText2 = ({
                 evt.stopPropagation();
                 if (evt.ctrlKey && evt.key === 'Enter') {
                     console.log('New Segment');
+
                     onNewSegment();
                 }
             },
             keyup(evt) {
                 evt.stopPropagation();
             },
-            input: helpers.debounce((evt) => {
-                const newText = evt.target.innerText;
-                if (!multiline) {
-                    evt.target.innerText = newText.replaceAll(/\n/g, '');
-                    evt.target.innerText = newText.replaceAll(/<br>/g, '');
-                    evt.target.innerText = newText.replaceAll(/<br\/>/g, '');
-                }
-                onEditText({text: newText});
-            }, settings.delayOfDebouncers)
+            input: helpers.debounce(
+                callbackInput,
+                settings.delayOfDebouncers
+                )
         }
     });
+
+    if (isActive)
+        elInput.focus()
 
     dom.create({
         tagName: 'link',

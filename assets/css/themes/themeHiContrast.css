@@ -4,6 +4,7 @@
     --backgroundColor: #000000; /* Haupt-Hintergrund (schwarz) */
     --backgroundColorHighlighted: #474124; /* Haupt-Hintergrund (dunkel) */
     --backgroundColorShaded: #1a1a1a; /* Abgedunkelter-Hintergrund  */
+    --backgroundColorCanvas: #ffffff;
     --backgroundColorBG: #000000; /* Hintergrund ganz hinten */
     --backgroundColorInputs: #000000;   /* Hintergrund für Inputfelder */
     --textColor: #ffffff; /* Primäre Textfarbe (weiß) */

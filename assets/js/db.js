@@ -201,7 +201,7 @@ const db = {
                 const request = store.delete(id);
 
                 request.onsuccess = () => {
-                    console.log('Success removing ', id);
+                    // console.log('Success removing ', id);
 
                     resolve(true);
                 };

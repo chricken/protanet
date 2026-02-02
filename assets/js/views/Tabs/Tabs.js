@@ -7,6 +7,7 @@ import data from '../../data.js';
 import CompTab from '../../components/tab/tab.js';
 import Volume from "../../classes/Volume.js";
 import ViewEditVolume from "../EditVolume/EditVolume.js";
+import ViewEditGraph from "../EditGraph/EditGraph.js";
 import ViewVolume from "../Volume/Volume.js";
 
 const tabs = () => {
@@ -31,6 +32,7 @@ const tabs = () => {
         })
     })
 
+    // Nur ausführen, wenn eine Arbeit geladen ist
     if (data.work?.id) {
 
         CompTab({
@@ -55,6 +57,7 @@ const tabs = () => {
             legend: 'Graph',
             active: true,
             callback() {
+                ViewEditGraph();
             }
         }))
     }

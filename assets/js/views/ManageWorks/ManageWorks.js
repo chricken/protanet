@@ -108,6 +108,8 @@ const ManageWorks = () => {
                                     CompWorkTitle();
                                     ViewEditWork();
                                 }
+                            ).then(
+                                () => localStorage.setItem('loadedWorkID', selectedWork.id)
                             ).catch(
                                 console.warn
                             )
@@ -115,26 +117,6 @@ const ManageWorks = () => {
                         }
                     })
 
-                    CompButton({
-                        legend: 'Delete',
-                        parent: parentInfoWork,
-                        callback() {
-                            console.log(selectedWork);
-
-                            if (confirm(`Soll "${selectedWork.title}" wirklich gelöscht werden?`)) {
-                                let currentWorkID = data.work?.id || null;
-                                console.log(data);
-
-                                new Work(selected).then(
-                                    workToDelete => workToDelete.delete()
-                                ).catch(
-                                    console.warn
-                                )
-
-                            }
-
-                        }
-                    })
 
                 }
             }

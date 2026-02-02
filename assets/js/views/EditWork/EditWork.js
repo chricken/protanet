@@ -3,6 +3,7 @@
 import dom from '../../dom.js';
 import elements from '../../elements.js';
 import data from '../../data.js';
+import manageWorks from "../ManageWorks/ManageWorks.js";
 
 // Components
 import CompButton from '../../components/button/button.js';
@@ -54,7 +55,7 @@ const EditWork = () => {
         }
     })
 
-    let elInputImg= dom.create({
+    let elInputImg = dom.create({
         tagName: 'input',
         attr: {
             type: 'file',
@@ -140,6 +141,25 @@ const EditWork = () => {
                 CompWorkTitle();
             });
         }
+    })
+
+    CompButton({
+        legend: 'Delete',
+        parent: elements.workbench,
+        callback() {
+            if (confirm(`Shall the work ${work.title} really be deleted?`)) {
+                work.delete().then(
+                    (res) => console.log(res)
+                ).then(
+                    ()=> elements.tabs.innerHTML = ''
+                ).then(
+                    () => manageWorks()
+                ).catch(
+                    console.warn
+                )
+            }
+        }
+
     })
 
     dom.create({

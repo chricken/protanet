@@ -3,6 +3,7 @@
     /* Grundfarben */
     --backgroundColor: #1e1e1e; /* Haupt-Hintergrund (dunkel) */
     --backgroundColorHighlighted: #333; /* Haupt-Hintergrund (dunkel) */
+    --backgroundColorCanvas: #a6a6a6;
     --backgroundColorShaded: #2d2d2d; /* Abgedunkelter-Hintergrund  */
     --backgroundColorBG: #121212; /* Hintergrund ganz hinten */
     --backgroundColorInputs: #2a2a2a;   /* Hintergrund für Inputfelder */

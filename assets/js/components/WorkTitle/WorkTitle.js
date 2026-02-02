@@ -40,7 +40,7 @@ const workTitle = ({
     dom.create({
         cssClassName: 'titleText',
         parent: elements.containerWorkTitle,
-        content: data?.work?.title || 'Kein Projekt'
+        content: data?.work?.title || 'No Work loaded'
     })
 
 

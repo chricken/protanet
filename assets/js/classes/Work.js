@@ -94,16 +94,16 @@ class Work {
         // Das sichern der Eltern ist wichtig, denn es kann ja sein,
         // Dass das Kind auch allein gelöscht werden soll, ohne auch die Eltern zu löschen
 
-        Promise.all(
-            data.volumes.map(v => v.delete())
-        ).then(
-            () => db.deleteData({
-                dbName: 'works',
-                id: this.id
-            })
-        ).catch(
-            console.warn
-        )
+            return Promise.all(
+                data.volumes.map(v => v.delete())
+            ).then(
+                () => db.deleteData({
+                    dbName: 'works',
+                    id: this.id
+                })
+            ).catch(
+                console.warn
+            )
 
     }
 

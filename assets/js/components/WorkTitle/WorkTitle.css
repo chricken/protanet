@@ -4,11 +4,15 @@
     margin-right: var(--distanceBasic);
 }
 .worktitle.active {
-    font-size: var(--fontSizeLarge);
+    font-size: 1.2em;
     color: var(--contrastColor1);
     background-color: var(--backgroundColor);
     padding: var(--paddingBasic);
     cursor: pointer;
+    border-radius: 10px;
+    font-family: Museo700;
+    padding-left: var(--distanceBasic);
+    padding-right: var(--distanceBasic);
 }
 .worktitle.active:hover {
     background-color: var(--contrastColor1);;

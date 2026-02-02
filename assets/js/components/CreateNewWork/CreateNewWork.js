@@ -10,6 +10,7 @@ import Work from "../../classes/Work.js";
 import ViewTabs from "../../views/Tabs/Tabs.js";
 import CompWorkTitle from "../WorkTitle/WorkTitle.js";
 import ViewEditWork from "../../views/EditWork/EditWork.js";
+import data from "../../data.js";
 
 const CreateNewWork = () => {
     const myWork = {}
@@ -52,11 +53,6 @@ const CreateNewWork = () => {
         }
     })
 
-    /*
-    image = null,
-    */
-
-
     CompButton({
         parent: elements.workbench,
         legend: 'Create Work',
@@ -70,6 +66,8 @@ const CreateNewWork = () => {
                     CompWorkTitle
                 ).then(
                     ViewEditWork
+                ).then(
+                    () => localStorage.setItem('loadedWorkID', data.work.id)
                 ).catch(
                     console.warn
                 )

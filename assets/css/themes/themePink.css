@@ -4,6 +4,7 @@
     --backgroundColor: #fdf2f8; /* Haupt-Hintergrund (sehr helles Rosa) */
     --backgroundColorHighlighted: #e6bcd2; /* Haupt-Hintergrund (dunkel) */
     --backgroundColorShaded: #f3e8ff; /* Abgedunkelter-Hintergrund (hellviolett) */
+    --backgroundColorCanvas: #ffd6d6;
     --backgroundColorBG: #e879f9; /* Hintergrund ganz hinten (pink) */
     --backgroundColorInputs: #ffffff;   /* Hintergrund für Inputfelder (weiß bleibt) */
     --textColor: #831843; /* Primäre Textfarbe (dunkles Pink) */

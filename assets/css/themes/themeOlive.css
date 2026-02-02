@@ -4,6 +4,7 @@
     --backgroundColor: #f0f9f0; /* Haupt-Hintergrund (sehr helles Grün) */
     --backgroundColorHighlighted: #f0f9f0; /* Haupt-Hintergrund (dunkel) */
     --backgroundColorShaded: #e8f5e8; /* Abgedunkelter-Hintergrund (helles Olivgrün) */
+    --backgroundColorCanvas: #c7d1b5;
     --backgroundColorBG: #6b8e23; /* Hintergrund ganz hinten (Olivgrün) */
     --backgroundColorInputs: #ffffff;   /* Hintergrund für Inputfelder (weiß bleibt) */
     --textColor: #2d4a2d; /* Primäre Textfarbe (dunkles Olivgrün) */

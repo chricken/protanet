@@ -52,6 +52,7 @@ const tab = ({
                 click(evt) {
                     evt.stopPropagation();
                     ViewEditVolume(volume);
+                    elements.ui.innerHTML = '';
                 }
             }
         })

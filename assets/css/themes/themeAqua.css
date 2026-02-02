@@ -2,6 +2,7 @@
     /* Grundfarben */
     --backgroundColor: #e6f7ff; /* Haupt-Hintergrund (helles Aqua-Blau) */
     --backgroundColorHighlighted: #b3e0ff; /* Haupt-Hintergrund (dunkel) */
+    --backgroundColorCanvas: #b9cee3;
     --backgroundColorShaded: #ccf2ff; /* Abgedunkelter-Hintergrund (warmes Aqua-Blau) */
     --backgroundColorBG: #006699; /* Hintergrund ganz hinten (kräftiges Aqua-Blau) */
     --backgroundColorInputs: #f0faff; /* Hintergrund für Inputfelder (cremiges Aqua-Blau) */

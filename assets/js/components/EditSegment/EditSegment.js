@@ -121,6 +121,7 @@ const editSegment = ({
         multiline: true,
         description: segment.description || 'No Description',
         horizontal: false,
+        isActive: segment.isActive || false,
         onEditText: ({
                          text = ''
                      }) => {
@@ -130,6 +131,7 @@ const editSegment = ({
         },
         onNewSegment: () => {
             // Signal weiterleiten nach oben
+
             onNewSegment();
 
         },
