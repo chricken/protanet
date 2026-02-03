@@ -137,7 +137,7 @@ const EditWork = () => {
         legend: 'Save Changes',
         callback() {
             work.save().then(() => {
-                alert('Work saved successfully!');
+                // alert('Work saved successfully!');
                 CompWorkTitle();
             });
         }
@@ -151,7 +151,26 @@ const EditWork = () => {
                 work.delete().then(
                     (res) => console.log(res)
                 ).then(
-                    ()=> elements.tabs.innerHTML = ''
+                    () => localStorage.removeItem('loadedWorkID')
+                ).then(
+                    () => {
+                        data.work = null;
+                        data.volumes = [];
+                        data.chapters = [];
+                        data.segments = [];
+                        data.persons = [];
+                        data.groups = [];
+                        data.roles = [];
+                        data.places = [];
+                        data.events = [];
+                        data.things = [];
+                        data.notes = [];
+                        data.images = [];
+                    }
+                ).then(
+                    () => CompWorkTitle()
+                ).then(
+                    () => elements.tabs.innerHTML = ''
                 ).then(
                     () => manageWorks()
                 ).catch(

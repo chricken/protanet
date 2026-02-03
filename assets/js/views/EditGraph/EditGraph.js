@@ -12,6 +12,8 @@ import CompInputMultiline from '../../components/inputMultiline/inputMultiline.j
 import CompInfoBox from '../../components/InfoBox_alt/InfoBox.js';
 import CompWorkTitle from '../../components/WorkTitle/WorkTitle.js';
 
+import MdlAddPerson from '../../modals/addPerson/addPerson.js';
+
 
 const EditGraph = () => {
     elements.workspaceUI.innerHTML = '';
@@ -38,11 +40,11 @@ const EditGraph = () => {
     const containerUI = dom.create({
         parent: elements.workbench,
         cssClassName: 'containerUI',
-        content: 'Hier sind die Bedienelemente'
     })
 
-    elements.ui.innerHTML = 'Hier eine Übersicht über die Elemente, die dann im Editor angezeigt werden.';
+    addButtons(containerUI);
 
+    elements.ui.innerHTML = 'Hier eine Übersicht über die Elemente, die dann im Editor angezeigt werden.';
 
     dom.create({
         tagName: 'link',
@@ -50,6 +52,17 @@ const EditGraph = () => {
         attr: {
             rel: 'stylesheet',
             href: 'assets/js/views/EditGraph/EditGraph.css'
+        }
+    })
+
+}
+
+const addButtons = parent => {
+    CompButton({
+        legend: 'Add Person',
+        parent,
+        callback: () => {
+            MdlAddPerson();
         }
     })
 
